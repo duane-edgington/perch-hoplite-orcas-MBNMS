@@ -1,0 +1,39 @@
+perch-hoplite-orcas-MBNMS
+Copyright 2026 Monterey Bay Aquarium Research Institute (MBARI)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+--------------------------------------------------------------------------
+Third-party components and data
+--------------------------------------------------------------------------
+
+This work builds on Google Research's Perch and perch-hoplite:
+    https://github.com/google-research/perch-hoplite
+Perch V2 is distributed under its own license terms. The classifiers
+released here are linear probes trained on top of frozen Perch V2
+embeddings; they contain no Perch V2 model parameters.
+
+Portions of the pipeline code derive from or interoperate with
+perch-hoplite (Apache License 2.0, Copyright Google LLC).
+
+The raw MARS hydrophone recordings underlying this work are published
+independently as part of the Pacific Ocean Sound archive on the AWS
+Open Data registry, under their own terms. They are neither re-hosted
+nor relicensed here. See data_access/how_to_get_raw_audio.md.
+
+Visual ground truth for killer whale presence is drawn from published
+encounter reports of the California Killer Whale Project, cited as
+reference material and not redistributed.
+
+The MARS cabled observatory is operated by the Monterey Bay Aquarium
+Research Institute.

@@ -1,0 +1,38 @@
+# perch-hoplite-orcas-MBNMS — inference, training, review, and plotting.
+#
+# This pipeline runs pure PyTorch end to end. TensorFlow is NOT required:
+# phase2_classify.py injects a TF mock to satisfy upstream perch-hoplite
+# imports. If you find yourself installing TensorFlow, something is wrong.
+#
+# perch-hoplite itself is installed from source, not PyPI:
+#     pip install git+https://github.com/google-research/perch-hoplite.git
+#
+# Embedding (phase1_embed_torch.py) needs a SEPARATE environment with the
+# pure-PyTorch Perch V2 port:
+#     https://github.com/duane-edgington/perch-pytorch
+# See docs/REPRODUCE.md stage 0.
+#
+# Exact versions used to produce the released results: docs/VERSIONS.md
+
+# ---- Core ----
+torch>=2.12.0              # CUDA build strongly recommended
+numpy>=1.26
+ml-collections>=0.1.1
+etils[epath]>=1.5.0
+
+# ---- Audio I/O ----
+soundfile>=0.13.1          # WAV read/write, GUI audio playback
+librosa>=0.11.0            # audio feature utilities
+resampy>=0.4.2
+
+# ---- Labeling and review GUI ----
+gradio>=6.15.1             # 6.15.1 validated; 6.25.0 also confirmed working
+
+# ---- Data and plotting ----
+pandas>=2.2.0
+matplotlib>=3.8.0
+scipy>=1.12.0
+scikit-learn>=1.4.0
+
+# ---- Utilities ----
+tqdm>=4.66.0

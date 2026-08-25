@@ -1,0 +1,24 @@
+# Environments
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Bulk data — regenerable, deliberately not tracked (see docs/DATA.md)
+*.sqlite
+*.usearch
+db/
+resampled_32kHz/
+raw/
+*.wav
+!labels/clips/*.wav
+
+# Run artifacts
+logs/
+results/
+nohup.out
+*.log
+
+# OS
+.DS_Store

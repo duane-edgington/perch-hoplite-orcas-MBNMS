@@ -1,0 +1,3 @@
+month,date,raw_filename,aws_bucket,aws_key,byte_size,source_sample_rate_hz,role,notes
+2018-04,2018-04-13,MARS_20180413_000000.wav,TO_VERIFY,TO_VERIFY/2018/04/MARS_20180413_000000.wav,TO_VERIFY,256000,training,"EXAMPLE ROW - replace with generated manifest"
+2018-05,2018-05-12,MARS_20180512_083912.wav,TO_VERIFY,TO_VERIFY/2018/05/MARS_20180512_083912.wav,TO_VERIFY,256000,held-out,"EXAMPLE ROW - replace with generated manifest"

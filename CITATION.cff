@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+title: >-
+  perch-hoplite-orcas-MBNMS: Bigg's killer whale detection in the
+  MBARI MARS hydrophone archive using frozen Perch V2 embeddings
+message: >-
+  If you use this software, models, or labels, please cite both this
+  repository and the associated OCEANS 2026 poster.
+type: software
+authors:
+  - given-names: Duane
+    name-particle: R.
+    family-names: Edgington
+    affiliation: Monterey Bay Aquarium Research Institute (MBARI)
+    # orcid: 'https://orcid.org/0000-0000-0000-0000'   # TO VERIFY
+  - given-names: John
+    name-particle: P.
+    family-names: Ryan
+    affiliation: Monterey Bay Aquarium Research Institute (MBARI)
+    # orcid: 'https://orcid.org/0000-0000-0000-0000'   # TO VERIFY
+repository-code: 'https://github.com/duane-edgington/perch-hoplite-orcas-MBNMS'
+abstract: >-
+  Code, trained classifiers, expert-confirmed labels, and a
+  reproducibility bundle for detecting Bigg's (transient) killer whale
+  vocalizations in the MBARI MARS cabled hydrophone archive. The method
+  applies agile modeling with a human-in-the-loop labeling loop to a
+  linear probe trained on frozen Google Perch V2 audio embeddings.
+  Validation uses a permanently held-out test month (May 2018).
+keywords:
+  - passive acoustic monitoring
+  - bioacoustics
+  - killer whale
+  - Orcinus orca
+  - Bigg's killer whale
+  - Perch V2
+  - agile modeling
+  - foundation model
+  - MBARI MARS
+  - Monterey Bay National Marine Sanctuary
+license: Apache-2.0
+version: '1.0.0'
+date-released: '2026-09-21'
+# doi: '10.5281/zenodo.XXXXXXX'    # TO ADD once the Zenodo record is minted
