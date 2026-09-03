@@ -32,7 +32,7 @@ The Google Multispecies Whale Model's score CSVs were used for **one thing only*
 
 ## The fix that made it work
 
-MARS recordings at 891 m have typical peak amplitudes of 0.001–0.003 — very quiet. Without per-window peak normalization to 0.25 before the model, the PyTorch Perch V2 port diverged from the TensorFlow reference at **cosine 0.43–0.94** on real MARS audio. Not a subtle drift; effectively different embeddings.
+MARS recordings at 891 m have typical peak amplitudes of 0.001–0.003 — very quiet. On correctly normalized input the PyTorch Perch V2 port reproduces the TensorFlow reference to **cosine 0.9999996–0.9999999** across the validation clips. On un-normalized MARS audio that agreement fell to **cosine 0.43–0.94** — not a subtle drift, effectively different embeddings. The cause was the missing per-window peak normalization to 0.25, not the port itself.
 
 The fix is one line conceptually — normalize each 5-second window to peak 0.25 before embedding — and it unlocked everything downstream. All embeddings were regenerated afterward. Databases built this way carry a `_norm` suffix by convention.
 

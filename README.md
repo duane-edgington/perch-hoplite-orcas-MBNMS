@@ -56,7 +56,7 @@ Step-by-step, with every command: **[docs/REPRODUCE.md](docs/REPRODUCE.md)**.
 
 Two details are easy to get wrong and account for most divergence:
 
-- **Per-window peak normalization to 0.25 is mandatory.** MARS audio at depth has typical peak amplitudes of 0.0015–0.003. Without normalizing each window before Perch V2, embeddings diverge from the reference implementation at cosine 0.43–0.94. This is applied automatically inside the embedding adapter; the `_norm` suffix on a database directory is a naming convention marking it.
+- **Per-window peak normalization to 0.25 is mandatory.** MARS audio at depth has typical peak amplitudes of 0.0015–0.003. On correctly normalized input the PyTorch port matches the TensorFlow reference to cosine 0.9999996 or better. Feed it un-normalized audio and that agreement collapses to cosine 0.43–0.94 — the divergence is caused by the missing normalization, not by the port. Normalization is applied automatically inside the embedding adapter; the `_norm` suffix on a database directory is a naming convention marking it.
 - **`vol 3` in the resampling step is a voltage calibration, not an optional gain.** It converts raw hydrophone output to volts, the physical unit the science works in, and is applied to every resample in this project. Do not drop it. Clipping is not a practical concern here; low amplitude is, and normalization handles that downstream.
 
 ---

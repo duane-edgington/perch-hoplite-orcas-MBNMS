@@ -1,38 +1,51 @@
-# perch-hoplite-orcas-MBNMS — inference, training, review, and plotting.
+# requirements.txt — perch-hoplite-orcas-MBNMS
+# =============================================================================
+# Portable dependency set for training, inference, review, and plotting.
 #
-# This pipeline runs pure PyTorch end to end. TensorFlow is NOT required:
-# phase2_classify.py injects a TF mock to satisfy upstream perch-hoplite
-# imports. If you find yourself installing TensorFlow, something is wrong.
+# TENSORFLOW IS NOT REQUIRED. perch-hoplite ships TensorFlow only as an
+# optional `[tf]` extra, so the plain install below is TF-free by construction.
+# `phase2_classify.py` injects a TF mock to satisfy upstream imports. If you
+# find yourself installing TensorFlow to run this, something has gone wrong.
 #
-# perch-hoplite itself is installed from source, not PyPI:
-#     pip install git+https://github.com/google-research/perch-hoplite.git
+# PyTorch: installed here as a plain requirement, which resolves to the default
+# wheel for your platform. On hosts needing a specific CUDA build (e.g. NVIDIA
+# GB10 / CUDA 13), install torch FIRST from the appropriate index — the pin
+# below is then already satisfied and pip will not replace it. See the install
+# scripts in scripts/ and the exact released versions in docs/VERSIONS.md.
 #
-# Embedding (phase1_embed_torch.py) needs a SEPARATE environment with the
-# pure-PyTorch Perch V2 port:
-#     https://github.com/duane-edgington/perch-pytorch
-# See docs/REPRODUCE.md stage 0.
-#
-# Exact versions used to produce the released results: docs/VERSIONS.md
+# Embedding new audio (phase1_embed_torch.py) additionally needs the pure-
+# PyTorch Perch V2 port; see docs/REPRODUCE.md stage 0. Everything else here —
+# train, infer, review, tools/ — runs against an existing embedding database.
+# =============================================================================
 
-# ---- Core ----
-torch>=2.12.0              # CUDA build strongly recommended
-numpy>=1.26
-ml-collections>=0.1.1
-etils[epath]>=1.5.0
+# ---- Core: embedding database, retrieval, agile-modeling utilities ----
+# Brings in usearch (the vector index — this is where embeddings actually
+# live), librosa, matplotlib, ml-collections, numpy, scipy, and pandas.
+# Pinned exactly: this is the version the released results were produced with.
+# Install PLAIN, never `perch-hoplite[tf]`.
+perch-hoplite==1.0.2
+
+# ---- PyTorch: classifier training and inference ----
+# CPU wheels are sufficient for train/infer/review on an existing database.
+# The lower bound is deliberately loose: the classifier is a linear probe and
+# needs nothing recent. This lets older-GPU hosts install a wheel matching
+# their CUDA version. Released results used torch 2.12.1+cu130 — see
+# docs/VERSIONS.md. `torch.compile` (embedding only) needs >= 2.0.
+torch>=2.0
 
 # ---- Audio I/O ----
-soundfile>=0.13.1          # WAV read/write, GUI audio playback
-librosa>=0.11.0            # audio feature utilities
-resampy>=0.4.2
+soundfile>=0.13.1          # WAV read/write; audio playback in the review GUI
 
-# ---- Labeling and review GUI ----
-gradio>=6.15.1             # 6.15.1 validated; 6.25.0 also confirmed working
+# ---- Metrics and plotting not covered by perch-hoplite ----
+scikit-learn>=1.4          # t-SNE in tools/plot_tsne*.py
 
-# ---- Data and plotting ----
-pandas>=2.2.0
-matplotlib>=3.8.0
-scipy>=1.12.0
-scikit-learn>=1.4.0
+# ---- Progress reporting ----
+tqdm>=4.66
 
-# ---- Utilities ----
-tqdm>=4.66.0
+# ---- Labeling and review GUI (optional: only `phase2_classify.py review`) ----
+# 6.15.1 is the released version; 6.25.0 also validated. Use Chrome incognito.
+gradio>=6.15.1
+
+# ---- Optional: `phase2_classify.py infer --plot-distribution` only ----
+seaborn>=0.13
+
