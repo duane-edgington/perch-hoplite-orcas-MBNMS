@@ -2,7 +2,7 @@
 
 The exact tool versions used to produce the released results. Resampling output in particular can differ across SoX versions and builds, so these are part of the reproducibility record rather than incidental detail.
 
-> **Maintainer note — verify before release.** Entries marked `TO VERIFY` must be filled in from the actual production host. Run the commands shown and paste the output. Anything left as `TO VERIFY` in a published release is worse than omitting the section.
+All package versions below were read from the production venv on the primary host with `importlib.metadata.version`, not from memory or from a requirements file.
 
 ---
 
@@ -11,7 +11,8 @@ The exact tool versions used to produce the released results. Resampling output 
 | Component | Version | How to check |
 |---|---|---|
 | **SoX** | **14.4.2** (`/usr/bin/sox`) | `sox --version` |
-| OS | `TO VERIFY` | `lsb_release -d` or `cat /etc/os-release` |
+| OS | Ubuntu 24.04.3 LTS | `lsb_release -d` or `cat /etc/os-release` |
+| Kernel / arch | Linux aarch64 | `uname -srm` |
 
 SoX flags — these define the output bytes and must not be varied:
 
@@ -27,12 +28,16 @@ See [../resampling/README.md](../resampling/README.md) for what each flag does a
 
 | Component | Version | How to check |
 |---|---|---|
-| Python | `TO VERIFY` (3.12.x) | `python3 --version` |
+| Python | 3.12.3 | `python3 --version` |
 | PyTorch | 2.12.1+cu130 | `python3 -c "import torch; print(torch.__version__)"` |
 | CUDA | 13.0 | `nvcc --version` |
 | GPU | NVIDIA GB10 (Blackwell, compute capability 12.1) | `nvidia-smi` |
-| perch-pytorch | `TO VERIFY` (commit hash) | `git -C ~/perch-pytorch rev-parse HEAD` |
-| Perch V2 weights | ONNX-extracted, `weights.npz` + `graph_manifest.json` | see perch-pytorch |
+| PyTorch Perch V2 port | [`perch2-pytorch-port`](https://github.com/duane-edgington/perch2-pytorch-port) | `git -C <clone> rev-parse HEAD` |
+| Perch V2 weights | ONNX-extracted `weights.npz` + `graph_manifest.json`, regenerated locally by `extract_weights.py` | see the port repo's README |
+
+Perch V2 weights are **not redistributed** by either repository. The port repo's
+`extract_weights.py` regenerates them from Google's published model; it needs only
+`onnx`, `huggingface_hub`, and `numpy`, and runs on CPU with no GPU and no TensorFlow.
 
 Embedding runs used `--device cuda --compile`, hop size 5.0 s, batch size 8. Per-window peak normalization to 0.25 is applied inside the adapter and is not configurable.
 
@@ -40,36 +45,55 @@ A second GPU host was validated as producing identical review rendering and resu
 
 ---
 
-## Classification, inference, review (stages 5)
+## Classification, inference, review (stage 5)
 
 | Component | Version |
 |---|---|
-| perch-hoplite | 1.0.1 |
+| perch-hoplite | 1.0.2 |
+| usearch | 2.25.3 |
 | torch | 2.12.1+cu130 |
-| gradio | 6.15.1 (6.25.0 also validated) |
-| soundfile | 0.13.1 |
+| numpy | 2.4.4 |
+| scipy | 1.18.0 |
+| scikit-learn | 1.9.0 |
+| soundfile | 0.14.0 |
 | librosa | 0.11.0 |
-| numpy | `TO VERIFY` |
-| scipy, scikit-learn, matplotlib, pandas | see `../requirements.txt` |
+| ml-collections | 0.1.1 |
+| gradio | 6.15.1 (6.25.0 also validated) |
+| soxr | 1.1.0 |
+| timm | 1.0.27 |
 
-**No TensorFlow is required.** The pipeline runs pure PyTorch end to end; `phase2_classify.py` injects a TF mock to satisfy upstream perch-hoplite imports. If you find yourself installing TensorFlow to run this, something has gone wrong — please open an issue.
+**perch-hoplite is installed from PyPI at the pin above** — `pip install perch-hoplite==1.0.2`, never `perch-hoplite[tf]` and not from a git checkout. 1.0.2 is the version the released results were produced with.
 
-Training used `--num-steps 512 --train-ratio 0.8`, seed 42, for `orca_v10`.
+**No TensorFlow is required.** The pipeline runs pure PyTorch end to end; `phase2_classify.py` injects a TF mock to satisfy upstream perch-hoplite imports. TensorFlow is only an optional `[tf]` extra of perch-hoplite, so a plain install is TF-free by construction. If you find yourself installing TensorFlow to run this, something has gone wrong — please open an issue.
+
+Training used `--train-ratio 0.8` and seed 42 for `orca_v10`. The step count is recorded in `../models/orca_v10.metrics.json`, which is the authority; cite that file rather than this line.
 
 ---
 
 ## Reproducing the environment
 
+From the repository root:
+
 ```bash
 python3 -m venv venv && source venv/bin/activate
-pip install -r ../requirements.txt
-pip install git+https://github.com/google-research/perch-hoplite.git
+pip install -r requirements.txt
 ```
 
-Then, for embedding only, the separate perch-pytorch environment — see [REPRODUCE.md](REPRODUCE.md) stage 0.
+That is the whole install. `requirements.txt` pins `perch-hoplite==1.0.2`, which brings `usearch`, `librosa`, `matplotlib`, `ml-collections`, `numpy`, `scipy`, and `pandas` with it.
+
+On a host needing a specific CUDA build, install torch **first** from the matching index, then run the line above — the requirement is already satisfied and pip will not replace it:
+
+```bash
+# NVIDIA GB10 / CUDA 13 (the primary host):
+pip install torch --index-url https://download.pytorch.org/whl/cu130
+```
+
+For embedding, additionally clone [`perch2-pytorch-port`](https://github.com/duane-edgington/perch2-pytorch-port) and run its `extract_weights.py` — see [REPRODUCE.md](REPRODUCE.md) stage 0.
 
 ---
 
 ## Full pip freeze
 
-> `TO VERIFY` — paste the output of `pip freeze` from the production venv here at release, or commit it as `environment/pip-freeze.txt`. This is the belt-and-braces record for anyone who cannot reproduce results from the summary table above.
+The table above is the summary record. For the belt-and-braces version, commit the
+output of `pip freeze` from the production venv as `environment/pip-freeze.txt` and
+reference it here.
