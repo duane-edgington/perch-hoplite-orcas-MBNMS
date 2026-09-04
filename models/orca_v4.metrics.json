@@ -1,0 +1,82 @@
+{
+  "labels": [
+    "dolphin_call",
+    "humpback_song",
+    "orca_call",
+    "other",
+    "ship_noise"
+  ],
+  "eval_scores": {
+    "top1_acc": 0.9650349617004395,
+    "roc_auc": 0.9589885382542633,
+    "cmap": 0.8297406950801636,
+    "macro_f1": 0.6935065571299367,
+    "macro_f1_opt": 0.8299269228372808,
+    "per_class_f1": {
+      "n_eval": 296,
+      "per_class": {
+        "dolphin_call": {
+          "support": 38,
+          "f1_at_0": 0.53125,
+          "precision_at_0": 0.37777777777777777,
+          "recall_at_0": 0.8947368421052632,
+          "f1_opt": 0.765432098765432,
+          "precision_opt": 0.7209302325581395,
+          "recall_opt": 0.8157894736842105,
+          "opt_threshold": 2.049736738204956
+        },
+        "humpback_song": {
+          "support": 47,
+          "f1_at_0": 0.45000000000000007,
+          "precision_at_0": 0.29411764705882354,
+          "recall_at_0": 0.9574468085106383,
+          "f1_opt": 0.547945205479452,
+          "precision_opt": 0.40404040404040403,
+          "recall_opt": 0.851063829787234,
+          "opt_threshold": 0.976959764957428
+        },
+        "orca_call": {
+          "support": 45,
+          "f1_at_0": 0.8411214953271028,
+          "precision_at_0": 0.7258064516129032,
+          "recall_at_0": 1.0,
+          "f1_opt": 0.9473684210526316,
+          "precision_opt": 0.9,
+          "recall_opt": 1.0,
+          "opt_threshold": 1.1615344285964966
+        },
+        "other": {
+          "support": 10,
+          "f1_at_0": 0.6451612903225806,
+          "precision_at_0": 0.47619047619047616,
+          "recall_at_0": 1.0,
+          "f1_opt": 0.888888888888889,
+          "precision_opt": 1.0,
+          "recall_opt": 0.8,
+          "opt_threshold": 1.988937497138977
+        },
+        "ship_noise": {
+          "support": 3,
+          "f1_at_0": 1.0,
+          "precision_at_0": 1.0,
+          "recall_at_0": 1.0,
+          "f1_opt": 1.0,
+          "precision_opt": 1.0,
+          "recall_opt": 1.0,
+          "opt_threshold": 0.16349178552627563
+        }
+      },
+      "macro_f1_at_0": 0.6935065571299367,
+      "macro_f1_opt": 0.8299269228372808,
+      "macro_over_n_classes": 5
+    }
+  },
+  "train_args": {
+    "num_steps": 256,
+    "learning_rate": 0.001,
+    "weak_neg_weight": 0.05,
+    "batch_size": 128,
+    "train_ratio": 0.8,
+    "seed": 42
+  }
+}
