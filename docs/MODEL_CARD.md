@@ -62,9 +62,40 @@ These are **MARS and Monterey Bay numbers.** Do not assume they transfer.
 
 Scores are **logits, not probabilities.** The inference default floor of 0.0 is uniformly too permissive: on months confirmed orca-silent it produces hundreds of false positives that collapse to single digits under thresholding.
 
-**Primary operating threshold: +1.16.** Conservative: +1.5.
+**Use the threshold belonging to the model you are running** — see the table below.
 
-A single global threshold cannot serve all five classes — per-class F1-optimal thresholds span roughly +0.2 to +2.5, and using one value for all of them will silently mis-tune four of the five. Per-class thresholds are recorded in `orca_v10.metrics.json`; take them from there rather than from any number quoted in prose.
+### One threshold per model
+
+Each model has its own F1-optimal orca threshold, and they are not interchangeable:
+
+| Model | orca_call threshold |
+|---|---|
+| `orca_v4` | **+1.16** |
+| `orca_v10` | **+2.31** |
+
+Use the threshold that belongs to the model you are running. Applying v4's +1.16 to v10 will flood you with humpback; applying v10's +2.31 to v4 will cost you real detections. Conservative variants: +1.5 for v4.
+
+Both values are F1-optimal on held-out data for their respective model, and both were checked by cross-month validation against ground-truth months, where false positives collapse under thresholding while confirmed events retain most of their detections.
+
+### Running both models
+
+In practice this project runs **both classifiers on every month**, scores each at its own threshold, and compares the resulting orca detections before deciding which reads the month better. The two models disagree in informative ways, and which one wins is not constant across months.
+
+Where a month looks like it holds more than the threshold surfaced, the review extends *below* the cutoff by ear — sometimes below logit 0.0 — to build a more complete count. The threshold defines a review queue, not a detection boundary. Every orca in this project's confirmed counts was identified by listening, at whatever score it happened to carry.
+
+### Per-class thresholds
+
+A single global threshold cannot serve all five classes, and using one value for all of them will silently mis-tune four of the five:
+
+| Class | F1-optimal threshold |
+|---|---|
+| `humpback_song` | 0.79 |
+| `other` | 1.31 |
+| `ship_noise` | 1.81 |
+| `dolphin_call` | 1.94 |
+| `orca_call` | 2.31 |
+
+Take these from `orca_v10.metrics.json` rather than from any number quoted in prose — the file is the authority.
 
 ---
 
@@ -94,7 +125,7 @@ Practical consequence: **listen to 30 seconds of context, not just the 5-second 
 
 Detections are candidates, not conclusions. Every scientific claim in this release rests on expert listening, and we recommend that anyone building on it preserve that step rather than treating model output as ground truth.
 
-A false negative on a rare species can matter more than a false positive, depending on the application — the +1.16 threshold is tuned for our analysis goals and may not suit yours. The full score distribution is available at floor 0.0 if you need higher recall.
+A false negative on a rare species can matter more than a false positive, depending on the application — these thresholds are tuned for our analysis goals and may not suit yours. The full score distribution is available at floor 0.0 if you need higher recall.
 
 Killer whale location data can be sensitive. The MARS deployment location is public and fixed, and the sighting records we cross-reference are already published, so this release adds no new exposure — but a similar pipeline on a mobile or undisclosed deployment might.
 

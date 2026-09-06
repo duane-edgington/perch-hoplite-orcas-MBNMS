@@ -8,7 +8,7 @@ Analysis and evaluation scripts. Each runs standalone; several have paths define
 
 A window absent from a model's CSV means that model scored it below 0.0 — a miss at any positive threshold.
 
-**`score_orca_regions.py`** — threshold sweep against known ground-truth regions. This is how the +1.16 operating threshold was established: false positives collapse under thresholding on confirmed-silent months while confirmed events retain most of their detections.
+**`score_orca_regions.py`** — threshold sweep against known ground-truth regions. This is how each model's operating threshold was checked: false positives collapse under thresholding on confirmed-silent months while confirmed events retain most of their detections.
 
 ## Labels
 

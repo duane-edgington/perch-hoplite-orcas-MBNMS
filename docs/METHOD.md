@@ -32,7 +32,7 @@ The Google Multispecies Whale Model's score CSVs were used for **one thing only*
 
 ## The fix that made it work
 
-MARS recordings at 891 m have typical peak amplitudes of 0.001–0.003 — very quiet. On correctly normalized input the PyTorch Perch V2 port reproduces the TensorFlow reference to **cosine 0.9999996–0.9999999** across the validation clips. On un-normalized MARS audio that agreement fell to **cosine 0.43–0.94** — not a subtle drift, effectively different embeddings. The cause was the missing per-window peak normalization to 0.25, not the port itself.
+MARS recordings at 891 m have typical peak amplitudes of 0.001–0.003 — very quiet. Without per-window peak normalization to 0.25 before the model, the PyTorch Perch V2 port diverged from the TensorFlow reference at **cosine 0.43–0.94** on real MARS audio. Not a subtle drift; effectively different embeddings.
 
 The fix is one line conceptually — normalize each 5-second window to peak 0.25 before embedding — and it unlocked everything downstream. All embeddings were regenerated afterward. Databases built this way carry a `_norm` suffix by convention.
 
@@ -73,7 +73,7 @@ Those experiments informed what came next; their weights are not part of the rel
 
 After v6–v8 exhausted "add more data," the work shifted from training to **measuring**. Per-class F1 on the same held-out split as cmap replaced aggregate metrics as the primary read, and the picture changed immediately: `orca_call` was strong but needed a positive threshold; `humpback_song`, once it had real held-out support, was the weakest credible class at ~0.55; and `ship_noise`'s perfect 1.0 was exposed as an artifact of n=3.
 
-Cross-month validation over four ground-truth months established the operating threshold. False positives collapse under thresholding — October 2020 from 144 to 1, April 2026 from 323 to 6, across logit 0.0 to +2.0 — while confirmed events retain most of their detections. **+1.16 became the operating threshold**; the default 0.0 is unusable.
+Cross-month validation over four ground-truth months confirmed the operating threshold. False positives collapse under thresholding — October 2020 from 144 to 1, April 2026 from 323 to 6, across logit 0.0 to +2.0 — while confirmed events retain most of their detections. **v4's F1-optimal +1.16 became its operating threshold**; the default 0.0 is unusable.
 
 Aggregate metrics tell you a model changed. Per-class metrics tell you what to do next.
 

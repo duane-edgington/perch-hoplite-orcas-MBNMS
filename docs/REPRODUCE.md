@@ -144,7 +144,7 @@ for model in v4 v10; do
 done
 ```
 
-A logit floor of 0.0 is used *for evaluation* so that both models' full score distributions are captured. For interpretation, threshold at **+1.16** or above — see [MODEL_CARD.md](MODEL_CARD.md). Note that the inference CSV is per-label (one row per window per class), so raw row counts at floor 0.0 are inflated by also-ran classes.
+A logit floor of 0.0 is used *for evaluation* so that both models' full score distributions are captured. For interpretation, score each model at its own threshold — +1.16 for v4, +2.31 for v10 — and see [MODEL_CARD.md](MODEL_CARD.md). Note that the inference CSV is per-label (one row per window per class), so raw row counts at floor 0.0 are inflated by also-ran classes.
 
 **Reproduce the held-out comparison.** With both CSVs written and the May database's confirmed labels in place:
 

@@ -56,7 +56,7 @@ Step-by-step, with every command: **[docs/REPRODUCE.md](docs/REPRODUCE.md)**.
 
 Two details are easy to get wrong and account for most divergence:
 
-- **Per-window peak normalization to 0.25 is mandatory.** MARS audio at depth has typical peak amplitudes of 0.0015–0.003. On correctly normalized input the PyTorch port matches the TensorFlow reference to cosine 0.9999996 or better. Feed it un-normalized audio and that agreement collapses to cosine 0.43–0.94 — the divergence is caused by the missing normalization, not by the port. Normalization is applied automatically inside the embedding adapter; the `_norm` suffix on a database directory is a naming convention marking it.
+- **Per-window peak normalization to 0.25 is mandatory.** MARS audio at depth has typical peak amplitudes of 0.0015–0.003. Without normalizing each window before Perch V2, embeddings diverge from the reference implementation at cosine 0.43–0.94. This is applied automatically inside the embedding adapter; the `_norm` suffix on a database directory is a naming convention marking it.
 - **`vol 3` in the resampling step is a voltage calibration, not an optional gain.** It converts raw hydrophone output to volts, the physical unit the science works in, and is applied to every resample in this project. Do not drop it. Clipping is not a practical concern here; low amplitude is, and normalization handles that downstream.
 
 ---
@@ -88,11 +88,19 @@ pip install -r requirements.txt
 # Inspect the released classifier without any audio:
 python3 -c "import json; print(json.dumps(json.load(open('models/orca_v10.metrics.json')), indent=2))"
 
-# Run inference over an existing embedding database:
+# Run inference over an existing embedding database.
+# Each model uses its own threshold -- running both and comparing is
+# this project's standard practice.
+python3 pipeline/phase2_classify.py infer \
+    --db-dir /path/to/MARS_20180501_20180531_32kHz_norm \
+    --classifier models/orca_v4.pt \
+    --labels orca_call --logit-threshold 1.16 \
+    --output-csv may2018_v4_orca.csv
+
 python3 pipeline/phase2_classify.py infer \
     --db-dir /path/to/MARS_20180501_20180531_32kHz_norm \
     --classifier models/orca_v10.pt \
-    --labels orca_call --logit-threshold 1.16 \
+    --labels orca_call --logit-threshold 2.31 \
     --output-csv may2018_v10_orca.csv
 ```
 
@@ -105,7 +113,7 @@ Building a database from scratch needs a GPU and the pure-PyTorch Perch V2 port 
 
 Detection scores are **logits, not probabilities**. The default floor of 0.0 is far too permissive — on months confirmed to be orca-silent it yields hundreds of false positives, which collapse to single digits once thresholded.
 
-**Use +1.16** (the F1-optimal operating threshold) as the primary cutoff, +1.5 for a conservative read. And note that a single global threshold cannot serve all five classes: per-class optima span roughly +0.2 to +2.5. Per-class thresholds are in [docs/MODEL_CARD.md](docs/MODEL_CARD.md).
+**Each model has its own orca threshold: +1.16 for `orca_v4`, +2.31 for `orca_v10`.** They are not interchangeable — see [docs/MODEL_CARD.md](docs/MODEL_CARD.md). And within a model, a single threshold cannot serve all five classes: per-class optima span +0.79 to +2.31, and should be taken from the model's own `.metrics.json`.
 
 One more habit worth adopting: **check day-by-day data coverage before interpreting any month.** MARS has had outages. A power-connector failure ended recording on 19 September 2024, which is why a well-documented three-matriline Bigg's encounter on 27 September that year is simply not in the acoustic record. "No orca detected" on a day with no data means nothing at all. The coverage query is in [docs/REPRODUCE.md](docs/REPRODUCE.md).
 

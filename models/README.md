@@ -11,8 +11,10 @@ Both are linear probes on frozen Perch V2 embeddings — a few hundred kilobytes
 Read [../docs/MODEL_CARD.md](../docs/MODEL_CARD.md) before using either. The short version:
 
 - Scores are **logits, not probabilities**.
-- The inference default floor of 0.0 is far too permissive. Use **+1.16**.
-- A single global threshold cannot serve all five classes — per-class optima span roughly +0.2 to +2.5. Take them from `orca_v10.metrics.json`.
+- The inference default floor of 0.0 is far too permissive.
+- **Each model has its own orca threshold: +1.16 for `orca_v4`, +2.31 for `orca_v10`.** Not interchangeable.
+- Within a model, one threshold cannot serve all five classes — per-class optima span +0.79 to +2.31. Take them from the model's own `.metrics.json`.
+- Running both models on a month and comparing is the project's standard practice. See [../docs/MODEL_CARD.md](../docs/MODEL_CARD.md).
 - The dominant failure mode is humpback vocalization scoring as orca. Listen to 30 seconds of context, not just the 5-second window.
 
 ## Version numbering

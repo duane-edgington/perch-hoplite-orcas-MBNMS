@@ -36,7 +36,7 @@ One CLI, several subcommands, covering the whole agile modeling loop after embed
 python3 phase2_classify.py infer \
     --db-dir /path/to/db/MARS_20180501_20180531_32kHz_norm \
     --classifier ../models/orca_v10.pt \
-    --labels orca_call --logit-threshold 1.16 \
+    --labels orca_call --logit-threshold 2.31 \
     --output-csv may2018_v10_orca.csv
 ```
 

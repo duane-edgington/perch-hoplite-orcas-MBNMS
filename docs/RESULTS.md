@@ -127,7 +127,7 @@ When presenting any humpback clip from this dataset, please distinguish: "song" 
 
 **These April 2026 candidates are recorded as ambiguous and are NOT included as confirmed orca anywhere in this release.** A blind second-expert review is the required next step; agreement would make them strong, divergence would confirm genuine ambiguity. Please do not cite them as confirmed orca days.
 
-**A single global threshold does not work.** Per-class F1-optimal thresholds span roughly +0.2 to +2.5. The inference default of 0.0 is uniformly too permissive.
+**A single global threshold does not work.** Per-class F1-optimal thresholds span +0.79 to +2.31 — humpback 0.79, other 1.31, ship 1.81, dolphin 1.94, orca 2.31. The inference default of 0.0 is uniformly too permissive.
 
 **Precision is measured at and above threshold on confirmed sets, not as a month-wide false-alarm rate.** The May check is clean and complete for what it covers; it is not an exhaustive negative labeling of the month.
 
