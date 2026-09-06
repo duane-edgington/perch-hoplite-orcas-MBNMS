@@ -40,7 +40,7 @@ printf "Starting resample_sox_32k.sh: %04d-%02d days: %s\n" "${year}" "${month}"
 
 # SoX resample directly:
 #   rate -v 32000   convert to 32 kHz, -v = very high quality
-#   -b 16           16-bit depth (required by the Perch V2 input spec)
+#   -b 16           24-bit -> 16-bit (raw MARS is 24-bit; Perch V2 wants 16)
 #   highpass 10     remove DC offset (10 Hz highpass)
 #   vol 3           calibration to volts -- NOT an optional gain (see README.md)
 #   fade 0.1 -0 0.1 logarithmic 0.1 s fade in, full-duration hold (-0), 0.1 s fade out

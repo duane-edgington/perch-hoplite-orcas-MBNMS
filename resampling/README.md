@@ -1,6 +1,6 @@
 # Resampling raw MARS audio to 32 kHz
 
-Perch V2 expects 32 kHz, 16-bit mono input. MARS records at full bandwidth, so every month must be resampled before embedding.
+MARS records at 256 kHz, 24-bit. Perch V2 expects 32 kHz, 16-bit mono, so every month must be resampled before embedding — a conversion of both sample rate and bit depth. The same conversion has been needed for other models applied to this archive; it is not Perch-specific.
 
 Two scripts, identical SoX parameters, identical output bytes:
 
@@ -30,8 +30,8 @@ sox <in> -b 16 <out> rate -v 32000 highpass 10 fade 0.1 -0 0.1 vol 3
 
 | Flag | What it does | Why |
 |---|---|---|
-| `rate -v 32000` | Resample to 32 kHz, very-high-quality filter | Perch V2's expected input rate |
-| `-b 16` | 16-bit output | Required by the model input spec |
+| `rate -v 32000` | 256 kHz → 32 kHz, very-high-quality filter | Perch V2's expected input rate |
+| `-b 16` | 24-bit → 16-bit | Raw MARS audio is 24-bit; Perch V2 expects 16-bit |
 | `highpass 10` | 10 Hz highpass | Removes DC offset |
 | `vol 3` | **Voltage calibration** | Converts raw hydrophone output to volts — see below |
 | `fade 0.1 -0 0.1` | 0.1 s logarithmic fade in and out, full-duration hold | Avoids edge transients |

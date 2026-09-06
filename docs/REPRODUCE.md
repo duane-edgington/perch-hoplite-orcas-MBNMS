@@ -6,7 +6,7 @@ There are five stages. Only stage 2 (resampling) and stage 3 (embedding) are exp
 
 ```
 1. Get raw audio        AWS Open Data, free, no credentials
-2. Resample             SoX → 32 kHz 16-bit          ~1 day per month
+2. Resample             SoX: 256kHz/24bit -> 32kHz/16bit   ~1 day per month
 3. Embed                Perch V2 → 5 s vectors       ~40 min per month on a GB10
 4. Check coverage       which days actually recorded?      seconds
 5. Infer + evaluate     linear probe → detections          minutes
@@ -53,7 +53,7 @@ The months used here:
 
 ## Stage 2 — Resample to 32 kHz
 
-Perch V2 expects 32 kHz, 16-bit input.
+Raw MARS audio is 256 kHz, 24-bit. Perch V2 expects 32 kHz, 16-bit, so this stage converts both.
 
 ```bash
 cd resampling/
