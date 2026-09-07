@@ -25,6 +25,8 @@ def make_spectrogram_image(
     highlight_start: float | None = None,
     highlight_end: float | None = None,
     colormap: str | None = None,
+    figsize: tuple[float, float] = (7, 3),
+    dpi: int = 80,
 ) -> str:
     """Return a base64-encoded PNG spectrogram.
 
@@ -140,7 +142,7 @@ def make_spectrogram_image(
 
     # ── Plot ─────────────────────────────────────────────────────────────────
     fig, axes = plt.subplots(
-        2, 1, figsize=(7, 3),
+        2, 1, figsize=figsize,
         gridspec_kw={"height_ratios": [2.5, 1], "hspace": 0.05},
     )
     fig.patch.set_facecolor("#111827")
@@ -223,7 +225,7 @@ def make_spectrogram_image(
     ax_wave.set_yticks([])
 
     buf = io.BytesIO()
-    fig.savefig(buf, format="png", dpi=80, bbox_inches="tight",
+    fig.savefig(buf, format="png", dpi=dpi, bbox_inches="tight",
                 facecolor="#111827")
     plt.close(fig)
     buf.seek(0)
