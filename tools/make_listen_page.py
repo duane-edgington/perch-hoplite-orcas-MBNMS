@@ -132,19 +132,56 @@ def context_bounds(offset_s: float, file_dur: float):
     return start, end
 
 
+_AUDIO_FMT = {
+    "mp3": ("MP3", ".mp3", "PCM_16"),
+    "flac": ("FLAC", ".flac", "PCM_16"),
+    "wav": ("WAV", ".wav", "PCM_16"),
+}
+
+
 def write_audio(path: Path, audio, sr: int, fmt: str) -> Path:
+    """Write playback audio.
+
+    MP3 is the default. Normalizing quiet MARS audio to be audible raises the
+    noise floor, which costs FLAC most of its compression -- a 30-second
+    context clip runs about 1.3 MB lossless against 350 KB as MP3. The page is
+    for listening; anyone needing sample-exact audio can regenerate any window
+    from the public archive using the offsets in labels/.
+    """
     import soundfile as sf
 
-    path = path.with_suffix(".flac" if fmt == "flac" else ".wav")
+    sf_fmt, suffix, subtype = _AUDIO_FMT[fmt]
+    path = path.with_suffix(suffix)
     path.parent.mkdir(parents=True, exist_ok=True)
-    sf.write(str(path), audio, sr,
-             format="FLAC" if fmt == "flac" else "WAV", subtype="PCM_16")
+    kwargs = {} if fmt == "mp3" else {"subtype": subtype}
+    sf.write(str(path), audio, sr, format=sf_fmt, **kwargs)
     return path
 
 
-def write_png(path: Path, data_uri: str) -> None:
+def write_png(path: Path, data_uri: str, quantize: bool = True) -> None:
+    """Write the spectrogram PNG, palette-quantized unless disabled.
+
+    These images are a single colormap plus axis text, so 256 indexed colors
+    reproduce them with no visible change while roughly halving the file.
+    Silently keeps the original if Pillow is unavailable.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(base64.b64decode(data_uri.split(",", 1)[1]))
+    raw = base64.b64decode(data_uri.split(",", 1)[1])
+    path.write_bytes(raw)
+    if not quantize:
+        return
+    try:
+        from PIL import Image
+    except ImportError:
+        return
+    try:
+        with Image.open(path) as im:
+            im = im.convert("RGB").quantize(colors=256, dither=Image.Dither.NONE)
+            im.save(path, format="PNG", optimize=True)
+        if path.stat().st_size > len(raw):     # quantizing made it bigger
+            path.write_bytes(raw)
+    except Exception:
+        path.write_bytes(raw)
 
 
 def slug(filename: str, offset: float) -> str:
@@ -163,7 +200,7 @@ def utc_label(filename: str, offset: float) -> str:
 
 
 def build_card(entry, out: Path, audio_root: Path, spectro, fmt: str,
-               made: set, no_context: bool) -> dict:
+               made: set, no_context: bool, quantize: bool = True) -> dict:
     filename = entry["file"]
     offset = float(entry["offset"])
     cls = entry.get("class", "")
@@ -182,7 +219,7 @@ def build_card(entry, out: Path, audio_root: Path, spectro, fmt: str,
     clip = write_audio(out / "clips" / name, normalize(audio, CLIP_PEAK), sr, fmt)
     write_png(out / "spec" / (name + ".png"),
               spectro(audio, sr, spec_type=SPEC_TYPE, colormap=COLORMAP,
-                      figsize=CLIP_FIGSIZE, dpi=CLIP_DPI))
+                      figsize=CLIP_FIGSIZE, dpi=CLIP_DPI), quantize)
     made.add(name)
 
     card = {
@@ -206,7 +243,7 @@ def build_card(entry, out: Path, audio_root: Path, spectro, fmt: str,
         write_png(out / "spec" / (name + "_ctx.png"),
                   spectro(caudio, csr, spec_type=SPEC_TYPE, colormap=COLORMAP,
                           highlight_start=hl, highlight_end=hl + WINDOW_S,
-                          figsize=CTX_FIGSIZE, dpi=CTX_DPI))
+                          figsize=CTX_FIGSIZE, dpi=CTX_DPI), quantize)
         card.update({"ctx_clip": "clips/%s" % ctx.name,
                      "ctx_png": "spec/%s_ctx.png" % name,
                      "ctx_span": "%.0f–%.0f s" % (cstart, cend),
@@ -217,7 +254,20 @@ def build_card(entry, out: Path, audio_root: Path, spectro, fmt: str,
 
 
 def sample_by_day(entries, n):
-    """Pick up to n entries spread across days, so a gallery is not one afternoon."""
+    """Pick up to n entries spread across days, at most one per recording.
+
+    Two windows from the same recording are usually seconds apart and look and
+    sound nearly identical, so they make poor separate examples. Spreading
+    across days as well keeps a gallery from being one busy afternoon.
+    """
+    seen_rec = set()
+    unique = []
+    for a in entries:
+        if a["recording_32khz"] in seen_rec:
+            continue
+        seen_rec.add(a["recording_32khz"])
+        unique.append(a)
+    entries = unique
     by_day = defaultdict(list)
     for a in entries:
         by_day[a["recording_32khz"][5:13]].append(a)
@@ -337,7 +387,12 @@ def main():
                     help="cards per class when topping up from labels (default 3)")
     ap.add_argument("--orca-per-class", type=int, default=6,
                     help="cards for orca_call specifically (default 6)")
-    ap.add_argument("--audio-format", choices=("flac", "wav"), default="flac")
+    ap.add_argument("--audio-format", choices=("mp3", "flac", "wav"), default="mp3",
+                    help="mp3 keeps the page small with universal player "
+                         "support; flac is lossless but much larger once audio "
+                         "is normalized for playback (default: mp3)")
+    ap.add_argument("--no-quantize", action="store_true",
+                    help="keep full-color PNGs (larger)")
     ap.add_argument("--no-context", action="store_true",
                     help="skip the 30-second context panels")
     args = ap.parse_args()
@@ -377,11 +432,11 @@ def main():
         want = args.orca_per_class if cls == "orca_call" else args.per_class
         entries = list(picks_by_class.get(cls, []))
         if len(entries) < want and cls in by_class:
-            chosen = {(e["file"], float(e["offset"])) for e in entries}
+            used_recs = {e["file"] for e in entries}
             for a in sample_by_day(by_class[cls], want * 4 + 8):
-                key = (a["recording_32khz"], a["annotation_offset_s"])
-                if key in chosen:
+                if a["recording_32khz"] in used_recs:
                     continue
+                used_recs.add(a["recording_32khz"])
                 entries.append({"file": a["recording_32khz"],
                                 "offset": a["annotation_offset_s"], "class": cls})
                 if len(entries) >= want:
@@ -394,7 +449,8 @@ def main():
             if len(cards) >= want:
                 break
             c = build_card(e, args.out, args.audio_root, spectro,
-                           args.audio_format, made, args.no_context)
+                           args.audio_format, made, args.no_context,
+                           not args.no_quantize)
             if c:
                 cards.append(c)
         galleries[cls] = cards
