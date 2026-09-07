@@ -163,14 +163,14 @@ That is worth stating plainly as a result about the method. The human half of th
 
 | Database | Annotations |
 |---|---|
-| April 2018 | 714 |
+| April 2018 | 715 |
 | May 2018 | 283 |
 | October 2020 | 322 |
 | April 2026 | 86 |
-| **Total** | **1,405** |
+| **Total** | **1,406** |
 
-Of these, 1,351 are positives and 54 are weak negatives (all in April 2018 `orca_call`).
+Of these, 1,352 are positives and 54 are weak negatives (all in April 2018 `orca_call`).
 
-Several counts appear in our materials and all are correct, because they answer different questions. **873** labels built the trajectory of the presented v4 model. **1,076** rows were in the frozen three-season merge `orca_v10` trained on — 1,048 of them distinct, the difference being merge-artifact duplicates from April 2018. **1,405** is everything confirmed across all months and classes as of release, including work done after v10 was trained. State them separately rather than reconciling by rounding: the label files track the archive, not any one model's training set.
+Several counts appear in our materials and all are correct, because they answer different questions. **873** labels built the trajectory of the presented v4 model. **1,076** rows were in the frozen three-season merge `orca_v10` trained on — 1,048 of them distinct, the difference being merge-artifact duplicates from April 2018. **1,406** is everything confirmed across all months and classes as of release, including work done after v10 was trained. State them separately rather than reconciling by rounding: the label files track the archive, not any one model's training set.
 
 Total expert annotation effort to `orca_v10`: roughly 8–10 hours of listening across several weeks. That is the number worth dwelling on. Labeling was always the bottleneck — never computation.

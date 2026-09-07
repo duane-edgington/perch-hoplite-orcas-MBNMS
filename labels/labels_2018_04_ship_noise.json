@@ -1,11 +1,22 @@
 {
   "month": "2018_04",
   "species": "ship_noise",
-  "count": 31,
-  "n_positive": 31,
+  "count": 33,
+  "n_positive": 33,
   "n_negative": 0,
-  "n_recordings": 9,
+  "n_recordings": 10,
   "annotations": [
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20180404_185912_resampled_32kHz.wav",
+      "annotation_offset_s": 40.0,
+      "frame_index": 8,
+      "recording_start_utc_epoch": 1522868352,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2018_04"
+    },
     {
       "species": "ship_noise",
       "recording_32khz": "MARS_20180404_185912_resampled_32kHz.wav",
@@ -177,6 +188,17 @@
       "annotation_offset_s": 75.0,
       "frame_index": 15,
       "recording_start_utc_epoch": 1522869552,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2018_04"
+    },
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20180412_173913_resampled_32kHz.wav",
+      "annotation_offset_s": 590.0,
+      "frame_index": 118,
+      "recording_start_utc_epoch": 1523554753,
       "label": 1,
       "label_type": "positive",
       "annotator": "duane",

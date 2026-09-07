@@ -1,20 +1,20 @@
 {
   "2018_04": {
-    "rows": 742,
-    "distinct": 714,
+    "rows": 743,
+    "distinct": 715,
     "duplicates_dropped": 28,
     "classes": {
       "dolphin_call": {
-        "count": 184,
-        "n_positive": 184,
+        "count": 186,
+        "n_positive": 186,
         "n_negative": 0,
-        "n_recordings": 32
+        "n_recordings": 34
       },
       "humpback_song": {
-        "count": 21,
-        "n_positive": 21,
+        "count": 19,
+        "n_positive": 19,
         "n_negative": 0,
-        "n_recordings": 6
+        "n_recordings": 4
       },
       "orca_call": {
         "count": 428,
@@ -23,16 +23,16 @@
         "n_recordings": 75
       },
       "other": {
-        "count": 50,
-        "n_positive": 50,
+        "count": 49,
+        "n_positive": 49,
         "n_negative": 0,
-        "n_recordings": 11
+        "n_recordings": 10
       },
       "ship_noise": {
-        "count": 31,
-        "n_positive": 31,
+        "count": 33,
+        "n_positive": 33,
         "n_negative": 0,
-        "n_recordings": 9
+        "n_recordings": 10
       }
     }
   },

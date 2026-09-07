@@ -1,10 +1,10 @@
 {
   "month": "2018_04",
   "species": "dolphin_call",
-  "count": 184,
-  "n_positive": 184,
+  "count": 186,
+  "n_positive": 186,
   "n_negative": 0,
-  "n_recordings": 32,
+  "n_recordings": 34,
   "annotations": [
     {
       "species": "dolphin_call",
@@ -1926,6 +1926,28 @@
       "annotation_offset_s": 0.0,
       "frame_index": 0,
       "recording_start_utc_epoch": 1524525552,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2018_04"
+    },
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20180423_235912_resampled_32kHz.wav",
+      "annotation_offset_s": 350.0,
+      "frame_index": 70,
+      "recording_start_utc_epoch": 1524527952,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2018_04"
+    },
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20180424_050912_resampled_32kHz.wav",
+      "annotation_offset_s": 420.0,
+      "frame_index": 84,
+      "recording_start_utc_epoch": 1524546552,
       "label": 1,
       "label_type": "positive",
       "annotator": "duane",

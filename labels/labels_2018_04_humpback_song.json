@@ -1,33 +1,11 @@
 {
   "month": "2018_04",
   "species": "humpback_song",
-  "count": 21,
-  "n_positive": 21,
+  "count": 19,
+  "n_positive": 19,
   "n_negative": 0,
-  "n_recordings": 6,
+  "n_recordings": 4,
   "annotations": [
-    {
-      "species": "humpback_song",
-      "recording_32khz": "MARS_20180423_235912_resampled_32kHz.wav",
-      "annotation_offset_s": 350.0,
-      "frame_index": 70,
-      "recording_start_utc_epoch": 1524527952,
-      "label": 1,
-      "label_type": "positive",
-      "annotator": "duane",
-      "month": "2018_04"
-    },
-    {
-      "species": "humpback_song",
-      "recording_32khz": "MARS_20180424_050912_resampled_32kHz.wav",
-      "annotation_offset_s": 420.0,
-      "frame_index": 84,
-      "recording_start_utc_epoch": 1524546552,
-      "label": 1,
-      "label_type": "positive",
-      "annotator": "duane",
-      "month": "2018_04"
-    },
     {
       "species": "humpback_song",
       "recording_32khz": "MARS_20180430_061912_resampled_32kHz.wav",
