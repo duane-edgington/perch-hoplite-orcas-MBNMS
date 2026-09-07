@@ -54,7 +54,7 @@ A detector is only as interesting as its silences.
 
 **October 2020.** Bigg's killer whales were visually documented in Monterey Bay, and the acoustic record contains **exactly one confirmed orca call**: a single 5-second window on 5 October at 00:51 UTC, out of 535,278 windows in the month.
 
-The contrast within that same month, same instrument, is the whole point:
+That is one window out of 535,278, drawn from 4,504 recordings, in a month when whale-watching vessels reported multiple killer whale encounters. Humpbacks, by contrast, were abundant:
 
 | | Confirmed windows, October 2020 |
 |---|---|
@@ -65,7 +65,16 @@ Under `orca_v4` near-silence could have been a sensitivity limit rather than a f
 
 *Correction, September 2026:* earlier text reported zero orca; the single confirmed call, amid humpback vocalization, was labeled correctly throughout.
 
-**One call is a stronger result than none.** A literal zero always invites the objection that the detector simply missed them; a single confirmed call in a month of documented sightings shows the instrument *can* hear these animals at this site, which is what makes their near-total silence the rest of the time meaningful. Bigg's killer whales were present, repeatedly seen, and acoustically detected once. That is consistent with silent hunting — and it is measured rather than assumed.
+**Do not over-read the single call.** One validated 5-second window is not evidence that the detector works well on this month. The honest summary is narrower and less comfortable: during a month with multiple killer whale encounters reported by whale-watching vessels, the detector surfaced one verifiable orca call, and its remaining high-scoring candidates were misclassified humpback vocalizations — of which there were an abundance.
+
+Two readings fit that equally well, and this data cannot separate them:
+
+1. The animals really were near-silent, consistent with Bigg's killer whales hunting quietly.
+2. The detector misses their calls against a humpback-dominated background, which is its known dominant failure mode.
+
+Both are plausible and the second is not a remote possibility — humpback confusion is exactly what limits this classifier elsewhere. Separating them needs something this release does not have: simultaneous acoustic and visual observation, or a month with known orca presence and little humpback activity.
+
+What can be said without hedging is that October 2020 is a hard month for the detector, and that the sighting record and the acoustic record disagree in a way worth explaining rather than presenting as a result.
 
 **September 2024** offered what should have been an ideal external ground-truth test — a documented all-day, three-matriline Bigg's encounter on 27 September, independently reported. Recording had stopped on 19 September following a power-connector failure. The encounter is not in the acoustic record and is not recoverable from this deployment. Coverage was checked before inference, which is the only reason a meaningless "no orca on 27 September" result was never produced.
 
