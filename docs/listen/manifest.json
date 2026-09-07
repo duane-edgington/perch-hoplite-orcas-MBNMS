@@ -1,0 +1,280 @@
+{
+  "galleries": {
+    "orca_call": [
+      {
+        "title": "Killer whale \u2014 12 May 2018, the densest day in the archive",
+        "class": "orca_call",
+        "file": "MARS_20180512_075914_resampled_32kHz.wav",
+        "offset_s": 410.0,
+        "note": "181 confirmed calls on this day alone. Bigg's killer whale calls arrive as brief discrete bursts rather than continuous song, which is why the context here sounds punctuated rather than sustained.",
+        "when": "12 May 2018, 08:06:04 UTC",
+        "clip": "clips/MARS_20180512_075914_00410s.mp3",
+        "png": "spec/MARS_20180512_075914_00410s.png",
+        "ctx_clip": "clips/MARS_20180512_075914_00410s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180512_075914_00410s_ctx.png",
+        "ctx_span": "398\u2013428 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "Killer whale \u2014 13 April 2018, morning hunting event",
+        "class": "orca_call",
+        "file": "MARS_20180413_064913_resampled_32kHz.wav",
+        "offset_s": 545.0,
+        "note": "The first orca activity this project identified, and the event that started the work.",
+        "when": "13 April 2018, 06:58:18 UTC",
+        "clip": "clips/MARS_20180413_064913_00545s.mp3",
+        "png": "spec/MARS_20180413_064913_00545s.png",
+        "ctx_clip": "clips/MARS_20180413_064913_00545s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180413_064913_00545s_ctx.png",
+        "ctx_span": "532\u2013562 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "18 April 2018, 10:47:12 UTC",
+        "class": "orca_call",
+        "file": "MARS_20180418_103912_resampled_32kHz.wav",
+        "offset_s": 480.0,
+        "note": "",
+        "when": "18 April 2018, 10:47:12 UTC",
+        "clip": "clips/MARS_20180418_103912_00480s.mp3",
+        "png": "spec/MARS_20180418_103912_00480s.png",
+        "ctx_clip": "clips/MARS_20180418_103912_00480s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180418_103912_00480s_ctx.png",
+        "ctx_span": "468\u2013498 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "21 April 2018, 23:20:54 UTC",
+        "class": "orca_call",
+        "file": "MARS_20180421_231914_resampled_32kHz.wav",
+        "offset_s": 100.0,
+        "note": "",
+        "when": "21 April 2018, 23:20:54 UTC",
+        "clip": "clips/MARS_20180421_231914_00100s.mp3",
+        "png": "spec/MARS_20180421_231914_00100s.png",
+        "ctx_clip": "clips/MARS_20180421_231914_00100s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180421_231914_00100s_ctx.png",
+        "ctx_span": "88\u2013118 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "23 April 2018, 22:58:17 UTC",
+        "class": "orca_call",
+        "file": "MARS_20180423_224912_resampled_32kHz.wav",
+        "offset_s": 545.0,
+        "note": "",
+        "when": "23 April 2018, 22:58:17 UTC",
+        "clip": "clips/MARS_20180423_224912_00545s.mp3",
+        "png": "spec/MARS_20180423_224912_00545s.png",
+        "ctx_clip": "clips/MARS_20180423_224912_00545s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180423_224912_00545s_ctx.png",
+        "ctx_span": "532\u2013562 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "24 April 2018, 00:24:02 UTC",
+        "class": "orca_call",
+        "file": "MARS_20180424_001912_resampled_32kHz.wav",
+        "offset_s": 290.0,
+        "note": "",
+        "when": "24 April 2018, 00:24:02 UTC",
+        "clip": "clips/MARS_20180424_001912_00290s.mp3",
+        "png": "spec/MARS_20180424_001912_00290s.png",
+        "ctx_clip": "clips/MARS_20180424_001912_00290s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180424_001912_00290s_ctx.png",
+        "ctx_span": "278\u2013308 s",
+        "ctx_seconds": 30.0
+      }
+    ],
+    "humpback_song": [
+      {
+        "title": "Humpback whale \u2014 28 October 2020",
+        "class": "humpback_song",
+        "file": "MARS_20201028_125314_resampled_32kHz.wav",
+        "offset_s": 0.0,
+        "note": "Peak humpback season, and the busiest humpback day in the labeled set. Note how much the context adds: humpback vocalization is often continuous where orca is not.",
+        "when": "28 October 2020, 12:53:14 UTC",
+        "clip": "clips/MARS_20201028_125314_00000s.mp3",
+        "png": "spec/MARS_20201028_125314_00000s.png",
+        "ctx_clip": "clips/MARS_20201028_125314_00000s_ctx.mp3",
+        "ctx_png": "spec/MARS_20201028_125314_00000s_ctx.png",
+        "ctx_span": "0\u201330 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "24 April 2018, 00:05:02 UTC",
+        "class": "humpback_song",
+        "file": "MARS_20180423_235912_resampled_32kHz.wav",
+        "offset_s": 350.0,
+        "note": "",
+        "when": "24 April 2018, 00:05:02 UTC",
+        "clip": "clips/MARS_20180423_235912_00350s.mp3",
+        "png": "spec/MARS_20180423_235912_00350s.png",
+        "ctx_clip": "clips/MARS_20180423_235912_00350s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180423_235912_00350s_ctx.png",
+        "ctx_span": "338\u2013368 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "24 April 2018, 05:16:12 UTC",
+        "class": "humpback_song",
+        "file": "MARS_20180424_050912_resampled_32kHz.wav",
+        "offset_s": 420.0,
+        "note": "",
+        "when": "24 April 2018, 05:16:12 UTC",
+        "clip": "clips/MARS_20180424_050912_00420s.mp3",
+        "png": "spec/MARS_20180424_050912_00420s.png",
+        "ctx_clip": "clips/MARS_20180424_050912_00420s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180424_050912_00420s_ctx.png",
+        "ctx_span": "408\u2013438 s",
+        "ctx_seconds": 30.0
+      }
+    ],
+    "dolphin_call": [
+      {
+        "title": "Dolphin \u2014 13 April 2018",
+        "class": "dolphin_call",
+        "file": "MARS_20180413_071913_resampled_32kHz.wav",
+        "offset_s": 10.0,
+        "note": "Recorded the same morning as the confirmed killer whale event above, which makes the comparison a useful one.",
+        "when": "13 April 2018, 07:19:23 UTC",
+        "clip": "clips/MARS_20180413_071913_00010s.mp3",
+        "png": "spec/MARS_20180413_071913_00010s.png",
+        "ctx_clip": "clips/MARS_20180413_071913_00010s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180413_071913_00010s_ctx.png",
+        "ctx_span": "0\u201330 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "14 April 2018, 08:26:23 UTC",
+        "class": "dolphin_call",
+        "file": "MARS_20180414_081913_resampled_32kHz.wav",
+        "offset_s": 430.0,
+        "note": "",
+        "when": "14 April 2018, 08:26:23 UTC",
+        "clip": "clips/MARS_20180414_081913_00430s.mp3",
+        "png": "spec/MARS_20180414_081913_00430s.png",
+        "ctx_clip": "clips/MARS_20180414_081913_00430s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180414_081913_00430s_ctx.png",
+        "ctx_span": "418\u2013448 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "18 April 2018, 10:51:17 UTC",
+        "class": "dolphin_call",
+        "file": "MARS_20180418_104912_resampled_32kHz.wav",
+        "offset_s": 125.0,
+        "note": "",
+        "when": "18 April 2018, 10:51:17 UTC",
+        "clip": "clips/MARS_20180418_104912_00125s.mp3",
+        "png": "spec/MARS_20180418_104912_00125s.png",
+        "ctx_clip": "clips/MARS_20180418_104912_00125s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180418_104912_00125s_ctx.png",
+        "ctx_span": "112\u2013142 s",
+        "ctx_seconds": 30.0
+      }
+    ],
+    "ship_noise": [
+      {
+        "title": "Ship noise \u2014 4 April 2018",
+        "class": "ship_noise",
+        "file": "MARS_20180404_185912_resampled_32kHz.wav",
+        "offset_s": 355.0,
+        "note": "Broadband and mechanical. Worth hearing because it is what masks biological calls \u2014 one of the questions the context panel is there to answer.",
+        "when": "4 April 2018, 19:05:07 UTC",
+        "clip": "clips/MARS_20180404_185912_00355s.mp3",
+        "png": "spec/MARS_20180404_185912_00355s.png",
+        "ctx_clip": "clips/MARS_20180404_185912_00355s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180404_185912_00355s_ctx.png",
+        "ctx_span": "342\u2013372 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "19 April 2018, 11:50:13 UTC",
+        "class": "ship_noise",
+        "file": "MARS_20180419_114913_resampled_32kHz.wav",
+        "offset_s": 60.0,
+        "note": "",
+        "when": "19 April 2018, 11:50:13 UTC",
+        "clip": "clips/MARS_20180419_114913_00060s.mp3",
+        "png": "spec/MARS_20180419_114913_00060s.png",
+        "ctx_clip": "clips/MARS_20180419_114913_00060s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180419_114913_00060s_ctx.png",
+        "ctx_span": "48\u201378 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "29 April 2018, 22:54:17 UTC",
+        "class": "ship_noise",
+        "file": "MARS_20180429_224912_resampled_32kHz.wav",
+        "offset_s": 305.0,
+        "note": "",
+        "when": "29 April 2018, 22:54:17 UTC",
+        "clip": "clips/MARS_20180429_224912_00305s.mp3",
+        "png": "spec/MARS_20180429_224912_00305s.png",
+        "ctx_clip": "clips/MARS_20180429_224912_00305s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180429_224912_00305s_ctx.png",
+        "ctx_span": "292\u2013322 s",
+        "ctx_seconds": 30.0
+      }
+    ],
+    "other": [
+      {
+        "title": "Other \u2014 13 April 2018",
+        "class": "other",
+        "file": "MARS_20180413_082913_resampled_32kHz.wav",
+        "offset_s": 35.0,
+        "note": "A real sound that fits no named class. Not silence: quiet background is a separate label that never appears as a detection.",
+        "when": "13 April 2018, 08:29:48 UTC",
+        "clip": "clips/MARS_20180413_082913_00035s.mp3",
+        "png": "spec/MARS_20180413_082913_00035s.png",
+        "ctx_clip": "clips/MARS_20180413_082913_00035s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180413_082913_00035s_ctx.png",
+        "ctx_span": "22\u201352 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "12 April 2018, 17:49:03 UTC",
+        "class": "other",
+        "file": "MARS_20180412_173913_resampled_32kHz.wav",
+        "offset_s": 590.0,
+        "note": "",
+        "when": "12 April 2018, 17:49:03 UTC",
+        "clip": "clips/MARS_20180412_173913_00590s.mp3",
+        "png": "spec/MARS_20180412_173913_00590s.png",
+        "ctx_clip": "clips/MARS_20180412_173913_00590s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180412_173913_00590s_ctx.png",
+        "ctx_span": "570\u2013600 s",
+        "ctx_seconds": 30.0
+      },
+      {
+        "title": "18 April 2018, 10:53:32 UTC",
+        "class": "other",
+        "file": "MARS_20180418_104912_resampled_32kHz.wav",
+        "offset_s": 260.0,
+        "note": "",
+        "when": "18 April 2018, 10:53:32 UTC",
+        "clip": "clips/MARS_20180418_104912_00260s.mp3",
+        "png": "spec/MARS_20180418_104912_00260s.png",
+        "ctx_clip": "clips/MARS_20180418_104912_00260s_ctx.mp3",
+        "ctx_png": "spec/MARS_20180418_104912_00260s_ctx.png",
+        "ctx_span": "248\u2013278 s",
+        "ctx_seconds": 30.0
+      }
+    ]
+  },
+  "totals": {
+    "dolphin_call": 198,
+    "humpback_song": 336,
+    "orca_call": 586,
+    "other": 164,
+    "ship_noise": 67
+  },
+  "settings": {
+    "spec_type": "mel",
+    "colormap": "viridis",
+    "clip_peak_dbfs": -3.0,
+    "context_peak": 0.5,
+    "context_s": 30.0
+  }
+}
