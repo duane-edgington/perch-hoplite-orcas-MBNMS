@@ -115,7 +115,7 @@ Practical consequence: **listen to 30 seconds of context, not just the 5-second 
 
 **`other` is a heterogeneous catch-all** and is currently the weakest class. Treat `other` detections as "something is here, unclassified" rather than as a meaningful category.
 
-**`ship_noise` correlates positively with orca presence in this dataset.** Whale-watch and research vessels arrive once orcas are sighted. Any false-positive suppression keying on vessel noise would be exactly wrong on event days.
+**`ship_noise` sometimes correlates positively with orca presence in this dataset.** Whale-watch and research vessels arrive once orcas are sighted. Any false-positive suppression keying on vessel noise would be exactly wrong on event days.
 
 **Precision is characterized at and above threshold on confirmed sets**, not as an exhaustive month-wide false-alarm rate.
 

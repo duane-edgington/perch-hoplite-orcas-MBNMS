@@ -5,7 +5,7 @@ phase2_classify.py — Perch Hoplite Phase 2: Search, Label, Classify & Inferenc
 Loads a Hoplite vector database produced by phase1_embed.py, then provides a
 suite of sub-commands for the complete agile modeling workflow:
 
-  search      Embed a query audio clip and find nearest neighbours.
+  search      Embed a query audio clip and find nearest neighbors.
   label       Import a CSV of labels (recording_id, offset_s, label, type) into the DB.
   train       Train a linear classifier on the current DB labels.
   review      Run the trained classifier over the DB and write top-scoring results.
@@ -678,7 +678,7 @@ def build_parser() -> argparse.ArgumentParser:
                        help="Create a public Gradio share link (requires internet).")
 
     # ---- search ----
-    ps = sub.add_parser("search", help="Embed a query clip and find nearest neighbours.")
+    ps = sub.add_parser("search", help="Embed a query clip and find nearest neighbors.")
     add_db(ps)
     ps.add_argument("--query-audio", "-q", required=True,
                     help="Path or GCS URI to query audio clip (.wav/.flac).")
@@ -689,13 +689,13 @@ def build_parser() -> argparse.ArgumentParser:
     ps.add_argument("--window-s", type=float, default=5.0,
                     help="Window duration for query audio (seconds, default: 5).")
     ps.add_argument("--num-results", type=int, default=100,
-                    help="Number of nearest neighbours to retrieve (default: 100).")
+                    help="Number of nearest neighbors to retrieve (default: 100).")
     ps.add_argument("--score-fn", choices=["dot", "cos", "neg_euclidean"], default="dot",
                     help="Similarity function (default: dot).")
     ps.add_argument("--exact", action="store_true", default=True,
                     help="Use exact brute-force search (default: True).")
     ps.add_argument("--approx", dest="exact", action="store_false",
-                    help="Use approximate nearest-neighbour search (faster, less accurate).")
+                    help="Use approximate nearest-neighbor search (faster, less accurate).")
     ps.add_argument("--target-score", type=float, default=None,
                     help="If set, search for examples near this score (margin sampling).")
     ps.add_argument("--sample-rate-hz", type=int, default=None,
@@ -809,7 +809,7 @@ def _patch_usearch_get_embeddings_batch(db) -> None:
 
     Newer USearch (>=2.9) changed index.get(keys) to always return a tuple of
     1-D arrays instead of a single stacked np.ndarray.  perch-hoplite 1.0.1
-    expects the old behaviour and raises RuntimeError on the new API.
+    expects the old behavior and raises RuntimeError on the new API.
 
     threaded_brute_search spawns threads that each call db.ui.get() directly,
     bypassing any patch on db.get_embeddings_batch.  So we patch db.ui.get()
@@ -2292,12 +2292,17 @@ Click a label for each segment, then **Save Labels to DB**.
             # (e.g. "orca_call", "dolphin_call", "other").
             # In legacy mode the label is always query_label.
             store_label = choice if label_classes else query_label
-            # DELETE existing annotation for this window first (any label),
-            # then INSERT fresh.
+            # DELETE only THIS ANNOTATOR's existing annotation for this window,
+            # then INSERT fresh. Scoped by provenance so a second annotator ADDS an
+            # opinion rather than destroying the first annotator's label. (Fixed
+            # Aug 28 2026 -- the unscoped form silently overwrote other annotators,
+            # which matters because the review UI is blind by default: the radio is
+            # hardcoded value="unlabeled" and never reads existing labels from the DB,
+            # so an annotator overwrote labels they could not even see.)
             con.execute("""
                 DELETE FROM annotations
-                WHERE recording_id=? AND offsets=?
-            """, (rec_id, off_enc))
+                WHERE recording_id=? AND offsets=? AND provenance=?
+            """, (rec_id, off_enc, prov))
             con.execute("""
                 INSERT INTO annotations
                     (recording_id, offsets, label, label_type, provenance)

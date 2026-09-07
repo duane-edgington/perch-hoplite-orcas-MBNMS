@@ -65,7 +65,7 @@ Not in this release. Briefly, for honesty and so nobody repeats them:
 
 A context-embedding experiment replaced raw 5-second embeddings with 30-second Gaussian-weighted averages. The t-SNE looked beautiful — orca and humpback fully separated — and the classifier got materially worse (cmap 0.830 → 0.595). A context post-processing filter suppressed genuine 13 April orca. The reason is biological: **Bigg's killer whale calls are brief discrete bursts, not sustained bouts.** Averaging over 30 seconds dilutes exactly the signal you want. A pretty embedding visualization is not a better classifier.
 
-Adding May 2018 as a fourth training season inflated `ship_noise` detections roughly fourfold across three attempted fixes, none of which worked. The leading explanation is that the two spring events are acoustically distinct enough to spread the orca embedding cluster and shift neighbouring decision boundaries.
+Adding May 2018 as a fourth training season inflated `ship_noise` detections roughly fourfold across three attempted fixes, none of which worked. The leading explanation is that the two spring events are acoustically distinct enough to spread the orca embedding cluster and shift neighboring decision boundaries.
 
 Those experiments informed what came next; their weights are not part of the released lineage.
 

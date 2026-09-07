@@ -138,6 +138,6 @@ Apache License 2.0 — code, models, and released label data alike. See `LICENSE
 
 The raw MARS audio is not ours to relicense; it is distributed under its own terms via AWS Open Data. Perch V2 is Google Research's work under its own license — see `NOTICE`.
 
-## Acknowledgements
+## Acknowledgments
 
 Built on [google-research/perch-hoplite](https://github.com/google-research/perch-hoplite). Visual ground truth for killer whale presence comes from the [California Killer Whale Project](https://www.californiakillerwhaleproject.org/). MARS is operated by MBARI.

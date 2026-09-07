@@ -25,7 +25,7 @@ One CLI, several subcommands, covering the whole agile modeling loop after embed
 
 | Subcommand | Does |
 |---|---|
-| `search` | Embed a query clip, find nearest neighbours in the database |
+| `search` | Embed a query clip, find nearest neighbors in the database |
 | `label` | Import a CSV of labels into the database |
 | `train` | Train a linear probe on the current labels |
 | `review` | Serve the Gradio labeling and review interface |

@@ -28,6 +28,6 @@ Each annotation identifies a single 5-second window by recording filename and of
 
 **Per-class files mix positives and weak negatives.** `labels_2018_04_orca_call.json` holds 428 entries, but 374 are positives and 54 are weak negatives — background examples used as training signal. Read `n_positive` and `n_negative` from each file rather than its total. April 2018 is the only month with weak negatives.
 
-**April 2018 carried 28 duplicate rows, which are excluded here.** It was the first month analysed and the month the tooling was built on; repeated `merge_dbs.py` runs re-inserted 14 windows from 30 April up to three times each. Later months are clean. The exporter deduplicates on (recording, offset, label) and reports what it drops.
+**April 2018 carried 28 duplicate rows, which are excluded here.** It was the first month analyzed and the month the tooling was built on; repeated `merge_dbs.py` runs re-inserted 14 windows from 30 April up to three times each. Later months are clean. The exporter deduplicates on (recording, offset, label) and reports what it drops.
 
 **April 2026 holds one confirmed orca**, on 24 April, with humpbacks in the background — resolved by ear once comparable examples had accumulated from other years. A second April 2026 candidate remained ambiguous on re-review and is unlabelled rather than forced into a class.

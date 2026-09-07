@@ -40,7 +40,7 @@ LABEL_TYPE_MAP = {1: "positive", 2: "negative"}
 # column is not used for these four months: early review sessions ran with a
 # generic annotator id, and repeated merge_dbs.py runs appended "_merged" to it.
 # Newer databases record per-annotator identity correctly. See labels/README.md
-# and docs/DATA.md for how labelling responsibility was divided.
+# and docs/DATA.md for how labeling responsibility was divided.
 ANNOTATOR = "duane"
 
 

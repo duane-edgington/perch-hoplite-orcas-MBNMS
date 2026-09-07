@@ -88,7 +88,7 @@ Each annotation identifies a single 5-second window by recording filename and of
 | `orca_call` | positive | Killer whale vocalization. In this dataset, predominantly Bigg's (transient). |
 | `humpback_song` | positive | **Humpback vocalization generally**, not strictly complex song — see the caution below. |
 | `dolphin_call` | positive | Delphinid vocalization other than killer whale. |
-| `ship_noise` | positive | Vessel noise. Correlates *positively* with orca presence here — boats follow sightings. |
+| `ship_noise` | positive | Vessel noise. *Sometimes* correlates positively with orca presence here — boats follow sightings. |
 | `other` | positive | Real acoustic content that fits no named class: mixed signals, unusual sounds, ambiguous calls. Heterogeneous by construction. |
 | `negative` | weak negative | Background and ambient ocean noise — nothing biological happening. Training signal only; does not appear as a detection class in inference output. |
 

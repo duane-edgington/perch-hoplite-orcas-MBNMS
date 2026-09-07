@@ -24,6 +24,6 @@ A window absent from a model's CSV means that model scored it below 0.0 — a mi
 
 **`plot_tsne.py`** — t-SNE of embeddings, optionally across several databases.
 
-**`plot_tsne_orca_by_day.py`** — confirmed orca embeddings coloured by day. This produced the result that the 25 April evening encounter separates from the 13 April morning event within the same month. Takes `--confirmed-april-days` / `--confirmed-may-days` on the command line, and `--dpi` for print-quality export.
+**`plot_tsne_orca_by_day.py`** — confirmed orca embeddings colored by day. This produced the result that the 25 April evening encounter separates from the 13 April morning event within the same month. Takes `--confirmed-april-days` / `--confirmed-may-days` on the command line, and `--dpi` for print-quality export.
 
 A caution on that last one, learned the hard way: a t-SNE separation is a lead, not evidence, until it clears three checks — same-month comparison (rules out season and background effects), spread across distinct recordings (rules out a single-recording or single-boat artifact), and robustness across perplexity 10/30/50 (rules out a t-SNE artifact). Perch V2 embeds species and collapses within-orca variation, so what these plots can support is bounded.

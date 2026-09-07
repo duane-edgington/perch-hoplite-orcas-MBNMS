@@ -80,8 +80,9 @@ CLASS_BLURB = {
     "dolphin_call": "Delphinid vocalization other than killer whale — clicks, "
                     "whistles and buzzes, usually higher and faster than orca calls.",
     "ship_noise": "Vessel noise. Broadband and mechanical, with none of the tonal "
-                  "structure biological calls show. In this dataset it correlates "
-                  "positively with orca presence: vessels arrive once orcas are seen.",
+                  "structure biological calls show. In this dataset it sometimes "
+                  "correlates positively with orca presence: vessels arrive once "
+                  "orcas are seen.",
     "other": "A real sound that fits none of the named classes. Not the same as "
              "silence: quiet background is a separate label that never appears as "
              "a detection.",
@@ -124,9 +125,9 @@ def read_window(path: Path):
 
 
 def context_bounds(offset_s: float, file_dur: float):
-    """Centre CONTEXT_S on the window, exactly as load_30s_context() does."""
-    centre = offset_s + WINDOW_S / 2.0
-    start = max(0.0, centre - CONTEXT_S / 2.0)
+    """Center CONTEXT_S on the window, exactly as load_30s_context() does."""
+    center = offset_s + WINDOW_S / 2.0
+    start = max(0.0, center - CONTEXT_S / 2.0)
     end = min(file_dur, start + CONTEXT_S)
     start = max(0.0, end - CONTEXT_S)
     return start, end

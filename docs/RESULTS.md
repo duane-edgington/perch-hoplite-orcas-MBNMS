@@ -63,7 +63,7 @@ The contrast within that same month, same instrument, is the whole point:
 
 Under `orca_v4` near-silence could have been a sensitivity limit rather than a fact about the animals. So the more sensitive `orca_v10` — demonstrably able to find faint orca that v4 missed on the held-out month — was run over all 535,278 windows: 113 detections at floor 0.0, and 16 at or above +1.16. Those 16 were reviewed by ear: mostly humpback, one `other`, and the single confirmed orca call above. A separate promising 4–5 October cluster, with consecutive high-scoring windows in one recording and the profile of a genuine call sequence, turned out to be humpback.
 
-*Correction, September 2026:* earlier text reported zero orca; the single confirmed call, amid humpback vocalization, was labelled correctly throughout.
+*Correction, September 2026:* earlier text reported zero orca; the single confirmed call, amid humpback vocalization, was labeled correctly throughout.
 
 **One call is a stronger result than none.** A literal zero always invites the objection that the detector simply missed them; a single confirmed call in a month of documented sightings shows the instrument *can* hear these animals at this site, which is what makes their near-total silence the rest of the time meaningful. Bigg's killer whales were present, repeatedly seen, and acoustically detected once. That is consistent with silent hunting — and it is measured rather than assumed.
 
