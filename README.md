@@ -105,7 +105,7 @@ python3 pipeline/phase2_classify.py infer \
 ```
 
 Building a database from scratch needs a GPU and the pure-PyTorch Perch V2 port at
-[github.com/duane-edgington/perch-pytorch](https://github.com/duane-edgington/perch-pytorch). See [docs/REPRODUCE.md](docs/REPRODUCE.md).
+[github.com/duane-edgington/perch2-pytorch-port](https://github.com/duane-edgington/perch2-pytorch-port). See [docs/REPRODUCE.md](docs/REPRODUCE.md).
 
 ---
 

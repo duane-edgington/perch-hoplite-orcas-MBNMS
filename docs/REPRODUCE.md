@@ -29,7 +29,7 @@ pip install -r requirements.txt
 pip install git+https://github.com/google-research/perch-hoplite.git
 ```
 
-For stage 3 you additionally need [github.com/duane-edgington/perch-pytorch](https://github.com/duane-edgington/perch-pytorch), a pure-PyTorch reimplementation of Perch V2 verified for numerical parity against the TensorFlow SavedModel. No TensorFlow is required anywhere in this pipeline.
+For stage 3 you additionally need [github.com/duane-edgington/perch2-pytorch-port](https://github.com/duane-edgington/perch2-pytorch-port), a pure-PyTorch reimplementation of Perch V2 verified for numerical parity against the TensorFlow SavedModel. No TensorFlow is required anywhere in this pipeline.
 
 Exact versions used to produce the released results — including the SoX version, which affects output bytes — are pinned in [VERSIONS.md](VERSIONS.md).
 

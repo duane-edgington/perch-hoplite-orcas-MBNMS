@@ -87,17 +87,19 @@ Where a month looks like it holds more than the threshold surfaced, the review e
 
 ### Per-class thresholds
 
-A single global threshold cannot serve all five classes, and using one value for all of them will silently mis-tune four of the five:
+A single global threshold cannot serve all five classes, and using one value for all of them will silently mis-tune four of the five. The two models' optima also differ substantially, so read the column for the model you are running:
 
-| Class | F1-optimal threshold |
-|---|---|
-| `humpback_song` | 0.79 |
-| `other` | 1.31 |
-| `ship_noise` | 1.81 |
-| `dolphin_call` | 1.94 |
-| `orca_call` | 2.31 |
+| Class | `orca_v4` | `orca_v10` |
+|---|---|---|
+| `ship_noise` | 0.16 | 1.81 |
+| `humpback_song` | 0.98 | 0.79 |
+| `other` | 1.99 | 1.31 |
+| `dolphin_call` | 2.05 | 1.94 |
+| `orca_call` | **1.16** | **2.31** |
 
-Take these from `orca_v10.metrics.json` rather than from any number quoted in prose — the file is the authority.
+Take these from `orca_v4.metrics.json` and `orca_v10.metrics.json` rather than from any number quoted in prose — the files are the authority.
+
+One caution on v4's `ship_noise` at 0.16: that class had only 3 held-out examples in v4's evaluation split and reported an F1 of 1.0, which is an artifact of the tiny support rather than a real result. Its threshold is correspondingly unreliable. v10's 0.800 on 10 examples is the first `ship_noise` figure in this project that means anything.
 
 ---
 
