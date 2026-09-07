@@ -4,7 +4,7 @@
 
 Duane R. Edgington and John P. Ryan — Monterey Bay Aquarium Research Institute (MBARI)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22574816.svg)](https://doi.org/10.5281/zenodo.22574816)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22574816-blue)](https://doi.org/10.5281/zenodo.22574816)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 This repository accompanies the IEEE OCEANS 2026 Monterey poster (21–24 September 2026). It contains the code, trained classifiers, labels, and reproducibility bundle needed to regenerate our results from **already-public raw audio**, and to build on them.
