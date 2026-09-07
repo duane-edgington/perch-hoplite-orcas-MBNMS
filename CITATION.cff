@@ -37,4 +37,4 @@ keywords:
 license: Apache-2.0
 version: '1.0.0'
 date-released: '2026-09-21'
-# doi: '10.5281/zenodo.XXXXXXX'    # TO ADD once the Zenodo record is minted
+doi: '10.5281/zenodo.22574816'   # concept DOI: always resolves to the newest version

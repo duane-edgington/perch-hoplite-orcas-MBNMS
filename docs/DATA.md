@@ -121,7 +121,13 @@ A versioned, DOI'd snapshot of the derived artifacts — trained models, label t
 
 Zenodo is free and its standard per-record quota is comfortably larger than this release needs; the entire payload is single-digit megabytes.
 
-**DOI:** *to be minted at release.*
+**Concept DOI:** [10.5281/zenodo.22574816](https://doi.org/10.5281/zenodo.22574816) — always resolves to the newest version. Use this one for general citation and for the poster QR code.
+
+**Version DOI (v1.0.0):** [10.5281/zenodo.22574817](https://doi.org/10.5281/zenodo.22574817) — pins this exact release. Use this in a paper where the reader should see precisely what you saw.
+
+The record is archived automatically from a GitHub Release, so it contains a complete snapshot of this repository at the release tag — annotations, models, code, and docs together. Publishing a new version leaves the DOI above pointing at the newest one, while each version keeps its own DOI.
+
+The confirmed-clip audio subset is not in version 1.0.0; it is planned for a later version.
 
 Only derived artifacts go to Zenodo. No raw audio, no resampled months, no embedding databases.
 

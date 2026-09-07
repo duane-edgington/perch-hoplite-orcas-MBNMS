@@ -4,6 +4,9 @@
 
 Duane R. Edgington and John P. Ryan — Monterey Bay Aquarium Research Institute (MBARI)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22574816.svg)](https://doi.org/10.5281/zenodo.22574816)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
 This repository accompanies the IEEE OCEANS 2026 Monterey poster (21–24 September 2026). It contains the code, trained classifiers, labels, and reproducibility bundle needed to regenerate our results from **already-public raw audio**, and to build on them.
 
 ---
@@ -121,9 +124,11 @@ One more habit worth adopting: **check day-by-day data coverage before interpret
 
 ## Citation
 
-If you use this work, please cite the poster and this repository (see `CITATION.cff`). The archived, DOI'd snapshot of models, labels and example clips lives on Zenodo:
+If you use this work, please cite the poster and this archive. GitHub renders a "Cite this repository" button from `CITATION.cff`; the DOI'd snapshot on Zenodo is what a paper should cite:
 
-> DOI: *to be minted at release — see docs/DATA.md*
+> Edgington, D. R., & Ryan, J. P. (2026). *perch-hoplite-orcas-MBNMS: expert-confirmed Bigg's killer whale annotations, trained classifiers, and a reproducibility bundle for the MBARI MARS hydrophone archive* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22574816
+
+That is the **concept DOI**: it always resolves to the newest version. To pin exactly what you used, cite the version DOI instead — v1.0.0 is [10.5281/zenodo.22574817](https://doi.org/10.5281/zenodo.22574817).
 
 Raw audio should be cited independently as the Pacific Ocean Sound / MBARI MARS dataset on AWS Open Data; see [data_access/how_to_get_raw_audio.md](data_access/how_to_get_raw_audio.md).
 
