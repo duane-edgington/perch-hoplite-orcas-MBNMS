@@ -133,7 +133,7 @@ If you use this work, please cite the poster and this archive. GitHub renders a 
 
 > Edgington, D. R., & Ryan, J. P. (2026). *perch-hoplite-orcas-MBNMS: expert-confirmed Bigg's killer whale annotations, trained classifiers, and a reproducibility bundle for the MBARI MARS hydrophone archive* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22574816
 
-That is the **concept DOI**: it always resolves to the newest version. To pin exactly what you used, cite the version DOI instead — v1.0.0 is [10.5281/zenodo.22574817](https://doi.org/10.5281/zenodo.22574817).
+That is the **concept DOI**: it always resolves to the newest version. To pin exactly what you used, cite the version DOI instead — v1.1.0 is [10.5281/zenodo.22648592](https://doi.org/10.5281/zenodo.22648592).
 
 Raw audio should be cited independently as the Pacific Ocean Sound / MBARI MARS dataset on AWS Open Data; see [data_access/how_to_get_raw_audio.md](data_access/how_to_get_raw_audio.md).
 

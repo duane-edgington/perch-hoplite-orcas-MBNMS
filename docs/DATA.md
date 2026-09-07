@@ -135,7 +135,7 @@ Zenodo is free and its standard per-record quota is comfortably larger than this
 
 **Concept DOI:** [10.5281/zenodo.22574816](https://doi.org/10.5281/zenodo.22574816) — always resolves to the newest version. Use this one for general citation and for the poster QR code.
 
-**Version DOI (v1.0.0):** [10.5281/zenodo.22574817](https://doi.org/10.5281/zenodo.22574817) — pins this exact release. Use this in a paper where the reader should see precisely what you saw.
+**Version DOI (v1.1.0):** [10.5281/zenodo.22648592](https://doi.org/10.5281/zenodo.22648592) — pins this exact release. Use this in a paper where the reader should see precisely what you saw.
 
 The record is archived automatically from a GitHub Release, so it contains a complete snapshot of this repository at the release tag — annotations, models, code, and docs together. Publishing a new version leaves the DOI above pointing at the newest one, while each version keeps its own DOI.
 
