@@ -7,16 +7,14 @@ message: >-
   repository and the associated OCEANS 2026 poster.
 type: software
 authors:
-  - given-names: Duane
-    name-particle: R.
+  - given-names: Duane R.
     family-names: Edgington
     affiliation: Monterey Bay Aquarium Research Institute (MBARI)
-    # orcid: 'https://orcid.org/0000-0000-0000-0000'   # TO VERIFY
-  - given-names: John
-    name-particle: P.
+    orcid: 'https://orcid.org/0000-0002-2532-9596'
+  - given-names: John P.
     family-names: Ryan
     affiliation: Monterey Bay Aquarium Research Institute (MBARI)
-    # orcid: 'https://orcid.org/0000-0000-0000-0000'   # TO VERIFY
+    orcid: 'https://orcid.org/0000-0001-7954-5369'
 repository-code: 'https://github.com/duane-edgington/perch-hoplite-orcas-MBNMS'
 abstract: >-
   Code, trained classifiers, expert-confirmed labels, and a
