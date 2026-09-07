@@ -1,0 +1,51 @@
+{
+  "page": {
+    "title": "Listen: killer whales and their neighbours on the MARS hydrophone",
+    "subtitle": "MBARI MARS cabled hydrophone, 891 m depth, Monterey Canyon &middot; from <a href=\"https://github.com/duane-edgington/perch-hoplite-orcas-MBNMS\">perch-hoplite-orcas-MBNMS</a>",
+    "lead": "A label schema tells you what the classes are called. Hearing them tells you what they contain. Every clip below is a 5-second window that an expert confirmed by ear, presented exactly as the classifier receives it: 32 kHz, resampled from the public 256 kHz archive. Each card shows a spectrogram above a waveform, then plays the audio.",
+    "exemplars_lead": "Five clear, unambiguous examples &mdash; one per class. Start here, then browse more of any class below.",
+    "footer": "Confirmed by ear by D. Edgington; humpback labels verified by J. P. Ryan. The clips shown here are a sample; all 1,351 confirmed windows are listed with their recording and offset in the repository's <code>labels/</code> directory, and any of them can be regenerated from the public raw audio. Raw recordings are free and public via the AWS Open Data registry (Pacific Ocean Sound). Spectrograms are rendered by the same code as the project's annotation interface. See the <a href=\"https://github.com/duane-edgington/perch-hoplite-orcas-MBNMS\">repository</a> and <a href=\"https://doi.org/10.5281/zenodo.22574816\">DOI 10.5281/zenodo.22574816</a>."
+  },
+  "exemplars": [
+    {
+      "title": "Killer whale",
+      "class": "orca_call",
+      "file": "MARS_20180512_075914_resampled_32kHz.wav",
+      "offset": 410.0,
+      "spec": "linear",
+      "note": "12 May 2018 — the densest confirmed orca day in the archive, with 181 confirmed calls."
+    },
+    {
+      "title": "Humpback whale",
+      "class": "humpback_song",
+      "file": "MARS_20201028_125314_resampled_32kHz.wav",
+      "offset": 0.0,
+      "spec": "mel",
+      "note": "28 October 2020 — peak humpback season, and the busiest humpback day in the labelled set."
+    },
+    {
+      "title": "Dolphin",
+      "class": "dolphin_call",
+      "file": "MARS_20180413_071913_resampled_32kHz.wav",
+      "offset": 10.0,
+      "spec": "linear",
+      "note": "13 April 2018 — the same morning as a confirmed killer whale event, which makes the contrast a useful one."
+    },
+    {
+      "title": "Ship noise",
+      "class": "ship_noise",
+      "file": "MARS_20180404_185912_resampled_32kHz.wav",
+      "offset": 355.0,
+      "spec": "linear",
+      "note": "4 April 2018 — broadband and mechanical, with none of the tonal structure biological calls show."
+    },
+    {
+      "title": "Other",
+      "class": "other",
+      "file": "MARS_20180413_082913_resampled_32kHz.wav",
+      "offset": 35.0,
+      "spec": "mel",
+      "note": "13 April 2018 — a real sound that fits no named class. Not silence: quiet background is a separate label that never appears as a detection."
+    }
+  ]
+}
