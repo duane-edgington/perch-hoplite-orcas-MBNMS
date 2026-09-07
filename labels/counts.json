@@ -1,0 +1,144 @@
+{
+  "2018_04": {
+    "rows": 742,
+    "distinct": 714,
+    "duplicates_dropped": 28,
+    "classes": {
+      "dolphin_call": {
+        "count": 184,
+        "n_positive": 184,
+        "n_negative": 0,
+        "n_recordings": 32
+      },
+      "humpback_song": {
+        "count": 21,
+        "n_positive": 21,
+        "n_negative": 0,
+        "n_recordings": 6
+      },
+      "orca_call": {
+        "count": 428,
+        "n_positive": 374,
+        "n_negative": 54,
+        "n_recordings": 75
+      },
+      "other": {
+        "count": 50,
+        "n_positive": 50,
+        "n_negative": 0,
+        "n_recordings": 11
+      },
+      "ship_noise": {
+        "count": 31,
+        "n_positive": 31,
+        "n_negative": 0,
+        "n_recordings": 9
+      }
+    }
+  },
+  "2018_05": {
+    "rows": 283,
+    "distinct": 283,
+    "duplicates_dropped": 0,
+    "classes": {
+      "dolphin_call": {
+        "count": 4,
+        "n_positive": 4,
+        "n_negative": 0,
+        "n_recordings": 4
+      },
+      "orca_call": {
+        "count": 210,
+        "n_positive": 210,
+        "n_negative": 0,
+        "n_recordings": 27
+      },
+      "other": {
+        "count": 40,
+        "n_positive": 40,
+        "n_negative": 0,
+        "n_recordings": 40
+      },
+      "ship_noise": {
+        "count": 29,
+        "n_positive": 29,
+        "n_negative": 0,
+        "n_recordings": 15
+      }
+    }
+  },
+  "2020_10": {
+    "rows": 322,
+    "distinct": 322,
+    "duplicates_dropped": 0,
+    "classes": {
+      "dolphin_call": {
+        "count": 7,
+        "n_positive": 7,
+        "n_negative": 0,
+        "n_recordings": 7
+      },
+      "humpback_song": {
+        "count": 265,
+        "n_positive": 265,
+        "n_negative": 0,
+        "n_recordings": 152
+      },
+      "orca_call": {
+        "count": 1,
+        "n_positive": 1,
+        "n_negative": 0,
+        "n_recordings": 1
+      },
+      "other": {
+        "count": 47,
+        "n_positive": 47,
+        "n_negative": 0,
+        "n_recordings": 47
+      },
+      "ship_noise": {
+        "count": 2,
+        "n_positive": 2,
+        "n_negative": 0,
+        "n_recordings": 2
+      }
+    }
+  },
+  "2026_04": {
+    "rows": 86,
+    "distinct": 86,
+    "duplicates_dropped": 0,
+    "classes": {
+      "dolphin_call": {
+        "count": 3,
+        "n_positive": 3,
+        "n_negative": 0,
+        "n_recordings": 3
+      },
+      "humpback_song": {
+        "count": 50,
+        "n_positive": 50,
+        "n_negative": 0,
+        "n_recordings": 38
+      },
+      "orca_call": {
+        "count": 1,
+        "n_positive": 1,
+        "n_negative": 0,
+        "n_recordings": 1
+      },
+      "other": {
+        "count": 27,
+        "n_positive": 27,
+        "n_negative": 0,
+        "n_recordings": 27
+      },
+      "ship_noise": {
+        "count": 5,
+        "n_positive": 5,
+        "n_negative": 0,
+        "n_recordings": 5
+      }
+    }
+  }
+}

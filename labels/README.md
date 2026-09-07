@@ -12,18 +12,22 @@ Full schema, class definitions, annotator provenance, and what "confirmed" means
 
 Each annotation identifies a single 5-second window by recording filename and offset in seconds.
 
-| Month | Annotations | Role |
-|---|---|---|
-| April 2018 | 685 | training |
-| May 2018 | 260 | **held out — never trained on** |
-| October 2020 | 317 | training |
-| April 2026 | 74 | training |
-| **Total** | **1,336** | |
+| Month | Annotations | Positive | Weak negative | Role |
+|---|---|---|---|---|
+| April 2018 | 714 | 660 | 54 | training |
+| May 2018 | 283 | 283 | 0 | **held out — never trained on** |
+| October 2020 | 322 | 322 | 0 | training |
+| April 2026 | 86 | 86 | 0 | training |
+| **Total** | **1,405** | **1,351** | **54** | |
 
-## Three things to know before using these
+## Five things to know before using these
 
 **Every positive label was listened to.** Detections are candidates; labels are expert judgments made on the audio, usually with 30 seconds of context. Where a clip could not be resolved by ear it was left unlabeled rather than forced into a class.
 
 **`humpback_song` means humpback vocalization generally**, not strictly complex song. The name is broader than it sounds. See DATA.md.
 
-**The April 2026 ambiguous candidates are not in here as confirmed orca.** Thirteen high-scoring April 2026 clips sounded like orca in isolation and showed humpback vocalization throughout their surrounding context; they await a blind second-expert review. Please do not treat them as confirmed.
+**Per-class files mix positives and weak negatives.** `labels_2018_04_orca_call.json` holds 428 entries, but 374 are positives and 54 are weak negatives — background examples used as training signal. Read `n_positive` and `n_negative` from each file rather than its total. April 2018 is the only month with weak negatives.
+
+**April 2018 carried 28 duplicate rows, which are excluded here.** It was the first month analysed and the month the tooling was built on; repeated `merge_dbs.py` runs re-inserted 14 windows from 30 April up to three times each. Later months are clean. The exporter deduplicates on (recording, offset, label) and reports what it drops.
+
+**April 2026 holds one confirmed orca**, on 24 April, with humpbacks in the background — resolved by ear once comparable examples had accumulated from other years. A second April 2026 candidate remained ambiguous on re-review and is unlabelled rather than forced into a class.

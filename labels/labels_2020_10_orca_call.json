@@ -1,0 +1,21 @@
+{
+  "month": "2020_10",
+  "species": "orca_call",
+  "count": 1,
+  "n_positive": 1,
+  "n_negative": 0,
+  "n_recordings": 1,
+  "annotations": [
+    {
+      "species": "orca_call",
+      "recording_32khz": "MARS_20201005_004726_resampled_32kHz.wav",
+      "annotation_offset_s": 230.0,
+      "frame_index": 46,
+      "recording_start_utc_epoch": 1601858846,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    }
+  ]
+}

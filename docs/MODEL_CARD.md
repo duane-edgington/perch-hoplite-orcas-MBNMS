@@ -32,7 +32,9 @@ Three months of MARS recordings, deliberately chosen for contrast:
 | October 2020 | peak humpback season; orca-silent — the specificity anchor |
 | April 2026 | hard negatives — high-scoring humpback misclassified as orca |
 
-**1,076 annotations**, every one confirmed by expert listening. Held-out evaluation set: 459 examples. Per-class support is in `orca_v10.metrics.json` and [RESULTS.md](RESULTS.md).
+**1,076 annotation rows**, every one confirmed by expert listening. Held-out evaluation set: 459 examples. Per-class support is in `orca_v10.metrics.json` and [RESULTS.md](RESULTS.md).
+
+Of those 1,076 rows, 1,048 are distinct windows; 28 are duplicates that repeated `merge_dbs.py` runs introduced from April 2018, so 14 windows carried roughly triple weight in training. At 2.6% of rows this is small, and it is recorded rather than quietly removed — retraining reproduces `orca_v10` byte for byte only with the duplicates present. The published label files in `labels/` are deduplicated and therefore do not match v10's training set exactly; they track the archive, not one model's inputs.
 
 **May 2018 is permanently excluded from training** and serves as the held-out test month. This is a standing policy, not a one-off split.
 
@@ -103,7 +105,7 @@ Take these from `orca_v10.metrics.json` rather than from any number quoted in pr
 
 **Ecotype.** The orca detected here are predominantly Bigg's (transients), largely associated with the CA140 matriline. The model is not validated on Residents or Offshores, and provides **no ecotype classification.**
 
-**Humpback confusion is the dominant failure mode.** Humpback whales have a large and varied repertoire and can produce orca-like sounds. Above-threshold false positives, where they occur, are overwhelmingly humpback. April 2026 produced the sharpest case: 13 high-scoring candidates that sounded like orca in isolation and revealed humpback vocalization throughout their 30-second context. **Those candidates are ambiguous and are not part of any confirmed count in this release.**
+**Humpback confusion is the dominant failure mode.** Humpback whales have a large and varied repertoire and can produce orca-like sounds. Above-threshold false positives, where they occur, are overwhelmingly humpback. April 2026 produced the sharpest case: 13 high-scoring candidates that sounded like orca in isolation and revealed humpback vocalization throughout their 30-second context. Two were re-reviewed since: one confirmed as orca over humpback background, one left unlabelled as genuinely ambiguous. **Practical consequence: listen to the full 30 seconds, and expect some cases to stay undecidable until you have heard enough comparable examples.**
 
 Practical consequence: **listen to 30 seconds of context, not just the 5-second window.** The context routinely changes the call.
 

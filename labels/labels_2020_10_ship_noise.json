@@ -1,0 +1,32 @@
+{
+  "month": "2020_10",
+  "species": "ship_noise",
+  "count": 2,
+  "n_positive": 2,
+  "n_negative": 0,
+  "n_recordings": 2,
+  "annotations": [
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20201027_014314_resampled_32kHz.wav",
+      "annotation_offset_s": 170.0,
+      "frame_index": 34,
+      "recording_start_utc_epoch": 1603762994,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    },
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20201027_020314_resampled_32kHz.wav",
+      "annotation_offset_s": 260.0,
+      "frame_index": 52,
+      "recording_start_utc_epoch": 1603764194,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    }
+  ]
+}

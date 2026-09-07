@@ -104,12 +104,14 @@ Every positive label in this release was **listened to by an expert annotator**.
 
 Annotator provenance, which matters for interpreting the labels:
 
-- **D. Edgington** — orca, ship noise, dolphin. Killer whale identifications are his expert call.
-- **J. P. Ryan** — humpback. He is the humpback expert on the project; humpback identifications and quality-assurance reviews are his.
+- **D. Edgington** annotated every label in this release. Killer whale identifications are his expert call.
+- **J. P. Ryan** verified every humpback label. He is the humpback expert on the project.
+
+The `annotator` field in every exported record reads `duane`. It is set by the exporter rather than read from the database, for two reasons specific to these four months: early review sessions were run with a generic annotator id (`analyst`) rather than a personal one, and repeated `merge_dbs.py` runs then appended `_merged` to that value, so April 2018 rows read `analyst_merged_merged`. Newer databases do record per-annotator identity correctly — the review tool writes whatever `--annotator-id` supplies — but the released months predate that practice. The statement above is the accurate provenance record.
 
 Where a clip could not be resolved by ear, **it was left unlabeled rather than forced into a class.** This happened deliberately and repeatedly. One October 2020 review session produced 25 candidates and 0 labels, because every one showed audible contamination and none could be honestly called. That is a feature of the labeling discipline, not a gap in it.
 
-**Not included as confirmed:** the April 2026 candidates. Thirteen high-scoring clips there sounded like orca in isolation, with humpback vocalization throughout their surrounding context. They await a blind second-expert review and are documented in [RESULTS.md](RESULTS.md) as ambiguous. Please do not treat them as confirmed orca.
+**April 2026, partly resolved.** Thirteen high-scoring clips there sounded like orca in isolation, with humpback vocalization throughout their surrounding context. Two were re-reviewed: the 24 April window is confirmed orca with humpbacks in the background, and the 21 April window remained ambiguous and is unlabelled. See [RESULTS.md](RESULTS.md).
 
 ---
 

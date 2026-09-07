@@ -1,0 +1,87 @@
+{
+  "month": "2020_10",
+  "species": "dolphin_call",
+  "count": 7,
+  "n_positive": 7,
+  "n_negative": 0,
+  "n_recordings": 7,
+  "annotations": [
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20201003_065822_resampled_32kHz.wav",
+      "annotation_offset_s": 560.0,
+      "frame_index": 112,
+      "recording_start_utc_epoch": 1601708302,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    },
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20201005_210919_resampled_32kHz.wav",
+      "annotation_offset_s": 445.0,
+      "frame_index": 89,
+      "recording_start_utc_epoch": 1601932159,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    },
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20201007_013919_resampled_32kHz.wav",
+      "annotation_offset_s": 225.0,
+      "frame_index": 45,
+      "recording_start_utc_epoch": 1602034759,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    },
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20201022_102314_resampled_32kHz.wav",
+      "annotation_offset_s": 500.0,
+      "frame_index": 100,
+      "recording_start_utc_epoch": 1603362194,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    },
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20201022_110314_resampled_32kHz.wav",
+      "annotation_offset_s": 415.0,
+      "frame_index": 83,
+      "recording_start_utc_epoch": 1603364594,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    },
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20201024_143314_resampled_32kHz.wav",
+      "annotation_offset_s": 260.0,
+      "frame_index": 52,
+      "recording_start_utc_epoch": 1603549994,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    },
+    {
+      "species": "dolphin_call",
+      "recording_32khz": "MARS_20201028_125314_resampled_32kHz.wav",
+      "annotation_offset_s": 290.0,
+      "frame_index": 58,
+      "recording_start_utc_epoch": 1603889594,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2020_10"
+    }
+  ]
+}

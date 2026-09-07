@@ -1,0 +1,65 @@
+{
+  "month": "2026_04",
+  "species": "ship_noise",
+  "count": 5,
+  "n_positive": 5,
+  "n_negative": 0,
+  "n_recordings": 5,
+  "annotations": [
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20260408_182000_resampled_32kHz.wav",
+      "annotation_offset_s": 505.0,
+      "frame_index": 101,
+      "recording_start_utc_epoch": 1775672400,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2026_04"
+    },
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20260419_142000_resampled_32kHz.wav",
+      "annotation_offset_s": 515.0,
+      "frame_index": 103,
+      "recording_start_utc_epoch": 1776608400,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2026_04"
+    },
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20260425_173000_resampled_32kHz.wav",
+      "annotation_offset_s": 40.0,
+      "frame_index": 8,
+      "recording_start_utc_epoch": 1777138200,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2026_04"
+    },
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20260426_181000_resampled_32kHz.wav",
+      "annotation_offset_s": 35.0,
+      "frame_index": 7,
+      "recording_start_utc_epoch": 1777227000,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2026_04"
+    },
+    {
+      "species": "ship_noise",
+      "recording_32khz": "MARS_20260427_005000_resampled_32kHz.wav",
+      "annotation_offset_s": 180.0,
+      "frame_index": 36,
+      "recording_start_utc_epoch": 1777251000,
+      "label": 1,
+      "label_type": "positive",
+      "annotator": "duane",
+      "month": "2026_04"
+    }
+  ]
+}

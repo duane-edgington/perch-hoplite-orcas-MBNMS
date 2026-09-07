@@ -125,7 +125,9 @@ When presenting any humpback clip from this dataset, please distinguish: "song" 
 
 **Humpback and orca overlap acoustically, and humpbacks can sound like almost anything.** The clearest instance is April 2026: 13 candidates at ≥ +2.31, including the highest-scoring clip anywhere in the project and a near-consecutive bout — on paper the most orca-looking candidate set we have generated. On review, several clips sounded clearly orca within their 5-second window while the surrounding 30 seconds revealed humpback vocalizations throughout. Audio alone cannot separate "orca and humpback both present" from "humpbacks producing orca-like sounds within their own repertoire."
 
-**These April 2026 candidates are recorded as ambiguous and are NOT included as confirmed orca anywhere in this release.** A blind second-expert review is the required next step; agreement would make them strong, divergence would confirm genuine ambiguity. Please do not cite them as confirmed orca days.
+**Partly resolved since.** On re-review, the 24 April window (score 3.023) was confirmed as orca with humpbacks in the background, and the 21 April window (score 2.410) remained ambiguous and was left unlabelled. What made the difference was not a better model but a better-calibrated ear: comparable orca-over-humpback examples had accumulated from other years in the meantime, and the call became makeable. The blind second-expert review is no longer needed for these two.
+
+That is worth stating plainly as a result about the method. The human half of the loop improves too, and some cases that are genuinely ambiguous today become decidable later without any change to the classifier.
 
 **A single global threshold does not work.** Per-class F1-optimal thresholds span +0.79 to +2.31 — humpback 0.79, other 1.31, ship 1.81, dolphin 1.94, orca 2.31. The inference default of 0.0 is uniformly too permissive.
 
@@ -143,12 +145,14 @@ When presenting any humpback clip from this dataset, please distinguish: "song" 
 
 | Database | Annotations |
 |---|---|
-| April 2018 | 685 |
-| May 2018 | 260 |
-| October 2020 | 317 |
-| April 2026 | 74 |
-| **Total** | **1,336** |
+| April 2018 | 714 |
+| May 2018 | 283 |
+| October 2020 | 322 |
+| April 2026 | 86 |
+| **Total** | **1,405** |
 
-Two counts appear in our materials and both are correct because they answer different questions: **873** labels built the trajectory of the presented v4 model; **1,336** is everything confirmed across all months and classes to date, including work completed after v4 was trained. They should be stated separately rather than reconciled by rounding.
+Of these, 1,351 are positives and 54 are weak negatives (all in April 2018 `orca_call`).
+
+Several counts appear in our materials and all are correct, because they answer different questions. **873** labels built the trajectory of the presented v4 model. **1,076** rows were in the frozen three-season merge `orca_v10` trained on — 1,048 of them distinct, the difference being merge-artifact duplicates from April 2018. **1,405** is everything confirmed across all months and classes as of release, including work done after v10 was trained. State them separately rather than reconciling by rounding: the label files track the archive, not any one model's training set.
 
 Total expert annotation effort to `orca_v10`: roughly 8–10 hours of listening across several weeks. That is the number worth dwelling on. Labeling was always the bottleneck — never computation.
