@@ -255,11 +255,23 @@ def build_card(entry, out: Path, audio_root: Path, spectro, fmt: str,
 
 
 def sample_by_day(entries, n):
-    """Pick up to n entries spread across days, at most one per recording.
+    """Pick up to n entries, preferring days where this class was reviewed hardest.
+
+    Days are ranked by how many confirmed windows of the class they hold and
+    drawn from in that order, at most one window per recording and one per day
+    before revisiting.
+
+    Ranking by density matters more than it sounds. A day with 63 confirmed
+    humpback windows was a day spent reviewing humpback; a day with one, in a
+    month dominated by another species, is incidental and got less scrutiny.
+    This function used to march from the earliest date, which for humpback
+    meant April 2018 -- 21 labels from an orca-dominated month -- rather than
+    October 2020's 265 from peak humpback season. Two of the three humpback
+    cards it chose that way turned out to be mislabeled, and were caught by an
+    expert listening to this very page.
 
     Two windows from the same recording are usually seconds apart and look and
-    sound nearly identical, so they make poor separate examples. Spreading
-    across days as well keeps a gallery from being one busy afternoon.
+    sound nearly identical, so at most one is taken from each.
     """
     seen_rec = set()
     unique = []
@@ -268,13 +280,14 @@ def sample_by_day(entries, n):
             continue
         seen_rec.add(a["recording_32khz"])
         unique.append(a)
-    entries = unique
     by_day = defaultdict(list)
-    for a in entries:
+    for a in unique:
         by_day[a["recording_32khz"][5:13]].append(a)
     for d in by_day:
         by_day[d].sort(key=lambda a: (a["recording_32khz"], a["annotation_offset_s"]))
-    picked, days, i = [], sorted(by_day), 0
+    # Densest days first; ties broken by date so the choice stays deterministic.
+    days = sorted(by_day, key=lambda d: (-len(by_day[d]), d))
+    picked, i = [], 0
     while len(picked) < n and any(by_day[d] for d in days):
         d = days[i % len(days)]
         if by_day[d]:
