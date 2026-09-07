@@ -52,11 +52,20 @@ This is the clearest demonstration of the method's value. The retrained model di
 
 A detector is only as interesting as its silences.
 
-**October 2020.** Bigg's killer whales were visually documented in Monterey Bay, yet the acoustic record shows no confirmed orca vocalizations. Under `orca_v4` this could have been a sensitivity limit. So the more sensitive `orca_v10` — the model demonstrably able to find faint orca that v4 missed on May — was run over all 535,278 windows: 113 detections at floor 0.0, 16 at or above +1.16. All 16 reviewed by ear: **approximately 14 humpback, 2 other, zero orca.**
+**October 2020.** Bigg's killer whales were visually documented in Monterey Bay, and the acoustic record contains **exactly one confirmed orca call**: a single 5-second window on 5 October at 00:51 UTC, out of 535,278 windows in the month.
 
-A promising 4–5 October high-scoring cluster, with consecutive windows in one recording — the profile of a genuine call sequence — turned out to be humpback.
+The contrast within that same month, same instrument, is the whole point:
 
-This is the stronger result, not a disappointment. Absence measured with a good instrument is real absence, and it is consistent with Bigg's whales hunting silently: seen but not heard.
+| | Confirmed windows, October 2020 |
+|---|---|
+| `humpback_song` | 265 |
+| `orca_call` | **1** |
+
+Under `orca_v4` near-silence could have been a sensitivity limit rather than a fact about the animals. So the more sensitive `orca_v10` — demonstrably able to find faint orca that v4 missed on the held-out month — was run over all 535,278 windows: 113 detections at floor 0.0, and 16 at or above +1.16. Those 16 were reviewed by ear: mostly humpback, one `other`, and the single confirmed orca call above. A separate promising 4–5 October cluster, with consecutive high-scoring windows in one recording and the profile of a genuine call sequence, turned out to be humpback.
+
+*Correction, September 2026:* earlier text reported zero orca; the single confirmed call, amid humpback vocalization, was labelled correctly throughout.
+
+**One call is a stronger result than none.** A literal zero always invites the objection that the detector simply missed them; a single confirmed call in a month of documented sightings shows the instrument *can* hear these animals at this site, which is what makes their near-total silence the rest of the time meaningful. Bigg's killer whales were present, repeatedly seen, and acoustically detected once. That is consistent with silent hunting — and it is measured rather than assumed.
 
 **September 2024** offered what should have been an ideal external ground-truth test — a documented all-day, three-matriline Bigg's encounter on 27 September, independently reported. Recording had stopped on 19 September following a power-connector failure. The encounter is not in the acoustic record and is not recoverable from this deployment. Coverage was checked before inference, which is the only reason a meaningless "no orca on 27 September" result was never produced.
 

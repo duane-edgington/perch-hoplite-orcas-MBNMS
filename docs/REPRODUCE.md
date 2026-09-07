@@ -44,7 +44,7 @@ The months used here:
 | Month | Role |
 |---|---|
 | April 2018 | training; sustained multi-day Bigg's presence |
-| October 2020 | training; peak humpback season, orca-silent |
+| October 2020 | training; peak humpback season, near-silent for orca |
 | April 2026 | training; hard negatives (humpback false positives) |
 | **May 2018** | **permanently held out — never trained on, by any model** |
 | September 2024 | exploratory; recording ends 19 Sept (see coverage note below) |

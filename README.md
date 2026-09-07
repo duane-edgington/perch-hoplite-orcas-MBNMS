@@ -30,7 +30,7 @@ The result is `orca_v10`, a five-class classifier (`orca_call`, `humpback_song`,
 
 Reviewing every one of v10's 14 above-threshold detections that were *not* already confirmed found **14/14 real orca and zero false positives** — and among them, orca on **four days v4 had missed entirely** (2, 3, 7 and 29 May). May 2018's confirmed orca days went from four to eight. The better model did not merely score known calls higher; it surfaced biology that was previously invisible.
 
-The same detector is equally informative when it hears nothing. October 2020 has documented visual sightings of Bigg's killer whales but no confirmed orca vocalizations — and `orca_v10`, demonstrably more sensitive, still finds none. Absence measured with a good instrument is real absence, consistent with Bigg's whales hunting silently.
+The same detector is equally informative when it hears almost nothing. October 2020 has documented visual sightings of Bigg's killer whales, and across 535,278 windows the acoustic record holds exactly **one** confirmed orca call — against 265 confirmed humpback windows in the same month, on the same instrument. That single call matters: it shows the detector can hear these animals here, which is what makes their silence the rest of the time a measurement rather than a miss. Consistent with Bigg's whales hunting silently.
 
 Full numbers, caveats and evidence: **[docs/RESULTS.md](docs/RESULTS.md)**. How the models were built: **[docs/METHOD.md](docs/METHOD.md)**.
 
@@ -114,7 +114,7 @@ Building a database from scratch needs a GPU and the pure-PyTorch Perch V2 port 
 
 ## Reading the output
 
-Detection scores are **logits, not probabilities**. The default floor of 0.0 is far too permissive — on months confirmed to be orca-silent it yields hundreds of false positives, which collapse to single digits once thresholded.
+Detection scores are **logits, not probabilities**. The default floor of 0.0 is far too permissive — on months with almost no orca activity it yields hundreds of false positives, which collapse to single digits once thresholded.
 
 **Each model has its own orca threshold: +1.16 for `orca_v4`, +2.31 for `orca_v10`.** They are not interchangeable — see [docs/MODEL_CARD.md](docs/MODEL_CARD.md). And within a model, a single threshold cannot serve all five classes: per-class optima span +0.79 to +2.31, and should be taken from the model's own `.metrics.json`.
 

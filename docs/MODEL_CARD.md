@@ -29,7 +29,7 @@ Three months of MARS recordings, deliberately chosen for contrast:
 | Month | Contributes |
 |---|---|
 | April 2018 | sustained Bigg's presence; orca, dolphin, ship, other |
-| October 2020 | peak humpback season; orca-silent — the specificity anchor |
+| October 2020 | peak humpback season; near-silent for orca (1 confirmed call) — the specificity anchor |
 | April 2026 | hard negatives — high-scoring humpback misclassified as orca |
 
 **1,076 annotation rows**, every one confirmed by expert listening. Held-out evaluation set: 459 examples. Per-class support is in `orca_v10.metrics.json` and [RESULTS.md](RESULTS.md).
@@ -62,7 +62,7 @@ These are **MARS and Monterey Bay numbers.** Do not assume they transfer.
 
 ## Thresholds — read this before using the model
 
-Scores are **logits, not probabilities.** The inference default floor of 0.0 is uniformly too permissive: on months confirmed orca-silent it produces hundreds of false positives that collapse to single digits under thresholding.
+Scores are **logits, not probabilities.** The inference default floor of 0.0 is uniformly too permissive: on months with almost no orca activity it produces hundreds of false positives that collapse to single digits under thresholding.
 
 **Use the threshold belonging to the model you are running** — see the table below.
 
