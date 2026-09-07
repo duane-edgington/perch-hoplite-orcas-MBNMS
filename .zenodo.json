@@ -1,0 +1,70 @@
+{
+  "upload_type": "dataset",
+  "title": "perch-hoplite-orcas-MBNMS: expert-confirmed Bigg's killer whale annotations, trained classifiers, and a reproducibility bundle for the MBARI MARS hydrophone archive",
+  "creators": [
+    {
+      "name": "Edgington, Duane R.",
+      "affiliation": "Monterey Bay Aquarium Research Institute (MBARI)",
+      "orcid": "0000-0002-2532-9596"
+    },
+    {
+      "name": "Ryan, John P.",
+      "affiliation": "Monterey Bay Aquarium Research Institute (MBARI)",
+      "orcid": "0000-0001-7954-5369"
+    }
+  ],
+  "description": "<p>Expert-confirmed annotations, trained classifiers, code, and a reproducibility bundle for detecting Bigg's (transient) killer whale vocalizations in the MBARI MARS cabled hydrophone archive, at 891 m depth in Monterey Canyon within Monterey Bay National Marine Sanctuary.</p><p><strong>Method.</strong> Google Perch V2 is used as a frozen foundation model: audio is embedded once into 5-second vectors, and a small linear probe is trained on top through an iterative human-in-the-loop labeling loop (agile modeling). Because embedding is the only expensive step, each retrain takes about 30 seconds, and a working detector emerges from hours rather than months of expert listening. The released classifier <code>orca_v10</code> was built from roughly 8&ndash;10 hours of expert annotation.</p><p><strong>Contents.</strong> 1,405 expert-confirmed annotations across four months (April 2018, May 2018, October 2020, April 2026), organized per month and per class as JSON; two trained classifiers (<code>orca_v4</code>, <code>orca_v10</code>) with per-class metrics; the resampling, embedding, inference, and review code; and a reproducibility bundle of source manifest, pinned tool versions, and sha256 checksums.</p><p><strong>Validation.</strong> May 2018 is a permanently held-out test month, never trained on by any model in the released lineage. Against 196 ear-confirmed orca windows there, <code>orca_v10</code> reaches 79.6% recall at its operating threshold against <code>orca_v4</code>'s 60.7%, and review of its above-threshold detections found 14/14 real orca with zero false positives &mdash; including orca on four days previously missed entirely.</p><p><strong>Raw audio is not included here.</strong> The underlying MARS recordings are already public and free on the AWS Open Data registry (Pacific Ocean Sound, <code>s3://pacific-sound-256khz-&lt;YYYY&gt;/</code>). Rather than re-hosting terabytes, this record publishes reproducibility: the exact resampling parameters, pinned tool versions, and checksums so a re-runner can confirm they regenerated our inputs byte for byte, plus the trained models and labels so results are reproducible without retraining.</p><p><strong>Scope and limits.</strong> The killer whales detected are predominantly Bigg's (transients); no ecotype classification is provided. The dominant failure mode is humpback vocalization scoring as orca. All figures are for the MARS deployment in Monterey Bay and should not be assumed to transfer. See MODEL_CARD.md in the archive for full limitations.</p>",
+  "license": {
+    "id": "Apache-2.0"
+  },
+  "access_right": "open",
+  "version": "1.0.0",
+  "language": "eng",
+  "keywords": [
+    "passive acoustic monitoring",
+    "bioacoustics",
+    "killer whale",
+    "Orcinus orca",
+    "Bigg's killer whale",
+    "transient killer whale",
+    "cetacean",
+    "Perch V2",
+    "agile modeling",
+    "foundation model",
+    "audio embeddings",
+    "machine learning",
+    "MBARI MARS",
+    "Monterey Bay National Marine Sanctuary",
+    "Pacific Ocean Sound",
+    "hydrophone",
+    "annotations",
+    "training data"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/duane-edgington/perch-hoplite-orcas-MBNMS",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/duane-edgington/perch2-pytorch-port",
+      "relation": "requires",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/google-research/perch-hoplite",
+      "relation": "isDerivedFrom",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://registry.opendata.aws/pacific-sound/",
+      "relation": "isDerivedFrom",
+      "resource_type": "dataset",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Presented at IEEE OCEANS 2026 Monterey, 21-24 September 2026. The MARS cabled observatory is operated by the Monterey Bay Aquarium Research Institute. Visual ground truth for killer whale presence is drawn from published encounter reports of the California Killer Whale Project. Perch V2 is the work of Google Research under its own license; the classifiers released here are linear probes trained on top of frozen Perch V2 embeddings and contain no Perch V2 parameters."
+}
