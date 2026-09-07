@@ -9,6 +9,10 @@ Duane R. Edgington and John P. Ryan — Monterey Bay Aquarium Research Institute
 
 This repository accompanies the IEEE OCEANS 2026 Monterey poster (21–24 September 2026). It contains the code, trained classifiers, labels, and reproducibility bundle needed to regenerate our results from **already-public raw audio**, and to build on them.
 
+### 🔊 [Listen to the animals first](https://duane-edgington.github.io/perch-hoplite-orcas-MBNMS/listen/)
+
+Before reading any of this, spend five minutes on the **[listening page](https://duane-edgington.github.io/perch-hoplite-orcas-MBNMS/listen/)**: confirmed examples of each class, each shown as the 5-second window the classifier scores and as 30 seconds of surrounding context. Nothing to install, nothing to download. A label schema tells you what the classes are called; hearing them tells you what they contain.
+
 ---
 
 ## What this is
@@ -75,6 +79,7 @@ Two details are easy to get wrong and account for most divergence:
 | `labels/` | Confirmed annotations per month, with schema and provenance |
 | `data_access/` | How to fetch the public raw audio, source manifest, checksums |
 | `docs/` | Method narrative, results, reproduction guide, pinned versions |
+| `docs/listen/` | The [listening page](https://duane-edgington.github.io/perch-hoplite-orcas-MBNMS/listen/) — spectrograms and audio for selected confirmed windows |
 
 Deliberately **not** here: full embedding databases (~45 GB) and bulk resampled audio (~723 GB), both regenerable from the scripts and manifest; the working repository's exploratory branches and internal notes; and any label not confirmed by ear. If you want something that isn't here, please open an issue — we would rather answer a specific question than publish an archive nobody can navigate.
 

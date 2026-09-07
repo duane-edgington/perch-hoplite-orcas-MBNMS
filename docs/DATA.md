@@ -10,7 +10,7 @@ So this release publishes the small, irreplaceable things — under 10 MB in tot
 |---|---|---|
 | Trained classifiers (`orca_v4.pt`, `orca_v10.pt`) + metrics | ~700 KB | this repo, `models/` |
 | Confirmed annotations, all months and classes | ~700 KB | this repo, `labels/` |
-| Confirmed example clips (WAV) | ~3 MB | Zenodo |
+| Selected confirmed clips + spectrograms (MP3, PNG) | ~8.5 MB | this repo, `docs/listen/` |
 | Resampling script, source manifest, checksums, pinned versions | KB | this repo |
 | Full resampled audio | ~723 GB | **not published** — regenerable |
 | Embedding databases | ~45 GB | **not published** — regenerable |
@@ -29,6 +29,18 @@ A re-runner goes: public raw audio → our resampling script at our pinned SoX v
 **Interoperable.** Open formats throughout: CSV and JSON for labels and metadata, WAV for clips, PyTorch `.pt` for models, plain Python for code, Raven-compatible selection tables where relevant. No proprietary containers.
 
 **Reusable.** One clear license (Apache 2.0), provenance recorded for every artifact, exact tool versions and flags pinned, checksums so a re-runner can verify they reproduced our inputs rather than silently diverging, and a model card documenting intended use and limits.
+
+---
+
+## The listening page
+
+A small set of confirmed windows is published as a browsable page with spectrograms and audio:
+
+**<https://duane-edgington.github.io/perch-hoplite-orcas-MBNMS/listen/>**
+
+Two or three examples per class, six for killer whale, each shown twice — the 5-second window the classifier scores, and 30 seconds of surrounding context with that window marked. The context is not decoration: whether a call belongs to one animal's bout, differs from what surrounds it, stands alone, or is masked by ship noise are questions the 5-second window cannot answer.
+
+Audio is peak-normalized for playback because the raw recordings are far too quiet to hear, and spectrograms use the same code and settings as the project's annotation interface. It is a teaching aid, not the dataset: every offset is in `labels/`, and any window can be regenerated from the public archive. Built by `tools/make_listen_page.py`.
 
 ---
 
