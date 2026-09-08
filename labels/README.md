@@ -2,7 +2,14 @@
 
 Expert-confirmed annotations for every month used in this work, exported per month and per class.
 
-Full schema, class definitions, annotator provenance, and what "confirmed" means: [../docs/DATA.md](../docs/DATA.md).
+Definitions and field reference: **[../docs/annotation_schema.md](../docs/annotation_schema.md)** — label vocabulary, taxonomic identifiers, review protocol, and what each field means. The machine-readable structure is `schema.json` (JSON Schema draft 2020-12); validate with:
+
+```bash
+pip install jsonschema
+python3 ../tools/validate_labels.py --labels .
+```
+
+How the release was assembled and what "confirmed" means: [../docs/DATA.md](../docs/DATA.md).
 
 ## Quick orientation
 

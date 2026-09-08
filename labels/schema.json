@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://duane-edgington.github.io/perch-hoplite-orcas-MBNMS/labels/schema.json",
+  "title": "MARS hydrophone annotation file",
+  "description": "Structure of the labels_<month>_<class>.json files in this directory. Each file holds every expert-confirmed annotation of one class in one month of MBARI MARS hydrophone recordings. One annotation is one 5-second window. Field semantics, label definitions, and taxonomy are documented in docs/annotation_schema.md; the release as a whole is described in docs/DATA.md.",
+  "type": "object",
+  "required": ["month", "species", "count", "n_positive", "n_negative", "n_recordings", "annotations"],
+  "additionalProperties": false,
+  "properties": {
+    "month": {
+      "$ref": "#/$defs/month",
+      "description": "The month this file covers. Matches the month field of every annotation in it."
+    },
+    "species": {
+      "$ref": "#/$defs/label_class",
+      "description": "The label class this file covers. Matches the species field of every annotation in it. Named 'species' for historical reasons; ship_noise and other are not taxa."
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of entries in annotations. Equals n_positive + n_negative."
+    },
+    "n_positive": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Entries with label_type 'positive' — the class was confirmed present."
+    },
+    "n_negative": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Entries with label_type 'negative' — weak negatives, used as training signal only. Present only for orca_call in April 2018 (54)."
+    },
+    "n_recordings": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of distinct source recordings the annotations are drawn from."
+    },
+    "annotations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/annotation" }
+    }
+  },
+  "$defs": {
+    "month": {
+      "type": "string",
+      "pattern": "^[0-9]{4}_[0-9]{2}$",
+      "examples": ["2018_04", "2018_05", "2020_10", "2026_04"]
+    },
+    "label_class": {
+      "type": "string",
+      "oneOf": [
+        { "const": "orca_call",
+          "title": "Killer whale vocalization",
+          "description": "Orcinus orca. In this archive predominantly the Bigg's (transient) ecotype; no ecotype classification is provided by the released models." },
+        { "const": "humpback_song",
+          "title": "Humpback whale vocalization",
+          "description": "Megaptera novaeangliae. The name is broader than it sounds: this class covers humpback vocalization generally, including non-song social calls." },
+        { "const": "dolphin_call",
+          "title": "Delphinid vocalization other than killer whale",
+          "description": "Family Delphinidae; species not resolved. Clicks, whistles and burst-pulse sounds." },
+        { "const": "ship_noise",
+          "title": "Vessel noise",
+          "description": "Anthropogenic: propulsion, cavitation, broadband mechanical noise. Not a taxon." },
+        { "const": "other",
+          "title": "Unclassified real signal",
+          "description": "A detectable signal fitting none of the named classes. Not silence: quiet background is a weak negative and never appears as a positive. Not a taxon." }
+      ]
+    },
+    "annotation": {
+      "type": "object",
+      "description": "One expert-confirmed 5-second window.",
+      "required": ["species", "recording_32khz", "annotation_offset_s", "frame_index",
+                   "recording_start_utc_epoch", "label", "label_type", "annotator", "month"],
+      "additionalProperties": false,
+      "properties": {
+        "species": { "$ref": "#/$defs/label_class" },
+        "recording_32khz": {
+          "type": "string",
+          "pattern": "^MARS_[0-9]{8}_[0-9]{6}_resampled_32kHz\\.wav$",
+          "description": "Bare filename of the 32 kHz resampled recording — no path. Derived from the public raw file MARS_<YYYYMMDD>_<HHMMSS>.wav by resampling/resample_sox_32k.sh. The timestamp is the recording start in UTC.",
+          "examples": ["MARS_20180512_075914_resampled_32kHz.wav"]
+        },
+        "annotation_offset_s": {
+          "type": "number",
+          "minimum": 0,
+          "multipleOf": 5,
+          "description": "Start of the 5-second window, in seconds from the beginning of the recording. Windows are non-overlapping, so offsets are multiples of 5. The window spans [offset, offset+5)."
+        },
+        "frame_index": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "annotation_offset_s / 5. Redundant with the offset; provided for convenience when indexing embedding arrays."
+        },
+        "recording_start_utc_epoch": {
+          "type": ["integer", "null"],
+          "description": "Unix epoch seconds of the recording start, parsed from the filename timestamp. Add annotation_offset_s for the window's own UTC time. Null if the filename could not be parsed."
+        },
+        "label": {
+          "type": "integer",
+          "enum": [0, 1],
+          "description": "1 for a positive annotation, 0 for a weak negative. Redundant with label_type."
+        },
+        "label_type": {
+          "type": "string",
+          "oneOf": [
+            { "const": "positive",
+              "description": "The class was confirmed present in this window by expert listening." },
+            { "const": "negative",
+              "description": "Weak negative: confirmed NOT to contain the class. Training signal only; never a detection." }
+          ]
+        },
+        "annotator": {
+          "type": "string",
+          "description": "Who made the annotation. Every annotation in this release is 'duane' (D. Edgington); humpback labels were verified by J. P. Ryan. Set by the exporter rather than read from the database — see docs/DATA.md for why.",
+          "examples": ["duane"]
+        },
+        "month": { "$ref": "#/$defs/month" }
+      }
+    }
+  }
+}

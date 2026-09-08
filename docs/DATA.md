@@ -46,6 +46,12 @@ Audio is peak-normalized for playback because the raw recordings are far too qui
 
 ## Label schema
 
+Full definitions — label vocabulary, taxonomic identifiers, review protocol, and a
+field reference — are in **[annotation_schema.md](annotation_schema.md)**. The
+machine-readable structure is `labels/schema.json`, checked by
+`tools/validate_labels.py`. What follows is the underlying database shape.
+
+
 Labels live in a SQLite `annotations` table inside each embedding database. The relevant shape:
 
 ```sql
@@ -135,7 +141,7 @@ Zenodo is free and its standard per-record quota is comfortably larger than this
 
 **Concept DOI:** [10.5281/zenodo.22574816](https://doi.org/10.5281/zenodo.22574816) — always resolves to the newest version. Use this one for general citation and for the poster QR code.
 
-**Version DOI (v1.1.0):** [10.5281/zenodo.22648592](https://doi.org/10.5281/zenodo.22648592) — pins this exact release. Use this in a paper where the reader should see precisely what you saw.
+**Version DOIs** are listed in the Versions panel of that record, one per release. Cite a version DOI in a paper where the reader should see precisely what you saw. They are deliberately not reproduced here: a version DOI named in prose goes stale at the next release, and both this file and the README had already named a stale one within a day of v1.1.0.
 
 The record is archived automatically from a GitHub Release, so it contains a complete snapshot of this repository at the release tag — annotations, models, code, and docs together. Publishing a new version leaves the DOI above pointing at the newest one, while each version keeps its own DOI.
 

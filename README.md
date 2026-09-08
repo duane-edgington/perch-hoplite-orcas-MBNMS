@@ -78,7 +78,7 @@ Two details are easy to get wrong and account for most divergence:
 | `models/` | Trained classifiers `orca_v4.pt`, `orca_v10.pt` + metrics + [model card](docs/MODEL_CARD.md) |
 | `labels/` | Confirmed annotations per month, with schema and provenance |
 | `data_access/` | How to fetch the public raw audio, source manifest, checksums |
-| `docs/` | Method narrative, results, reproduction guide, pinned versions |
+| `docs/` | Method narrative, results, reproduction guide, pinned versions, [annotation schema](docs/annotation_schema.md) |
 | `docs/listen/` | The [listening page](https://duane-edgington.github.io/perch-hoplite-orcas-MBNMS/listen/) — spectrograms and audio for selected confirmed windows |
 
 Deliberately **not** here: full embedding databases (~45 GB) and bulk resampled audio (~723 GB), both regenerable from the scripts and manifest; the working repository's exploratory branches and internal notes; and any label not confirmed by ear. If you want something that isn't here, please open an issue — we would rather answer a specific question than publish an archive nobody can navigate.
@@ -133,7 +133,7 @@ If you use this work, please cite the poster and this archive. GitHub renders a 
 
 > Edgington, D. R., & Ryan, J. P. (2026). *perch-hoplite-orcas-MBNMS: expert-confirmed Bigg's killer whale annotations, trained classifiers, and a reproducibility bundle for the MBARI MARS hydrophone archive* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22574816
 
-That is the **concept DOI**: it always resolves to the newest version. To pin exactly what you used, cite the version DOI instead — v1.1.0 is [10.5281/zenodo.22648592](https://doi.org/10.5281/zenodo.22648592).
+That is the **concept DOI**: it always resolves to the newest version, so it stays correct as this release is revised. To pin exactly what you used, cite the version-specific DOI shown in the Versions panel of the [Zenodo record](https://doi.org/10.5281/zenodo.22574816) instead.
 
 Raw audio should be cited independently as the Pacific Ocean Sound / MBARI MARS dataset on AWS Open Data; see [data_access/how_to_get_raw_audio.md](data_access/how_to_get_raw_audio.md).
 
